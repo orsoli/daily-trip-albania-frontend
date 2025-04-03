@@ -10,6 +10,10 @@ export default {
 };
 </script>
 
-<template></template>
+<template>
+  <div class="container">
+    <h1>Tours</h1>
+  </div>
+</template>
 
 <style lang="scss" scoped></style>

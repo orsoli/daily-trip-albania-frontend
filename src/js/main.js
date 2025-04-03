@@ -11,6 +11,7 @@ import sq from "../locales/sq/static.json";
 
 const i18n = createI18n({
   legacy: false,
+  globalInjection: true,
   locale: "en", // Selected language
   messages: {
     en, // English

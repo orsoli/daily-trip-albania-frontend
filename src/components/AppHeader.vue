@@ -5,28 +5,28 @@ export default {
     return {
       headerList: [
         {
-          text: this.$t("home"),
-          url: "{name:'home'}",
+          text: "home",
+          url: "/",
         },
         {
-          text: this.$t("tours"),
-          url: "name: 'tours'",
+          text: "tours",
+          url: "tours",
         },
         {
-          text: this.$t("destinations"),
-          url: "name: 'destinations'",
+          text: "destinations",
+          url: "destinations",
         },
         {
-          text: this.$t("accommodations"),
-          url: "name: 'accommodations'",
+          text: "accommodations",
+          url: "accommodations",
         },
         {
-          text: this.$t("about"),
-          url: "name: 'about'",
+          text: "about",
+          url: "about",
         },
         {
-          text: this.$t("contact"),
-          url: "name: 'contact'",
+          text: "contact",
+          url: "contact",
         },
       ],
 
@@ -39,9 +39,24 @@ export default {
 
   components: {},
 
+  computed: {
+    translatedHeaders() {
+      return this.headerList.map((header) => ({
+        text: this.$t(header.text),
+        url: header.url,
+      }));
+    },
+  },
+  watch: {
+    "$i18n.locale"() {
+      this.$forceUpdate();
+    },
+  },
+
   methods: {
     changeLanguage(lang) {
       this.$i18n.locale = lang;
+      console.log("Language changed to: ", lang);
     },
   },
 };
@@ -67,7 +82,7 @@ export default {
                 />
               </router-link>
             </li>
-            <li v-for="(header, i) in headerList" :key="i">
+            <li v-for="(header, i) in translatedHeaders" :key="i">
               <router-link :to="header.url">
                 {{ header.text }}
               </router-link>
