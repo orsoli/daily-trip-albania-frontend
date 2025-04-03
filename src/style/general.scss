@@ -1,1 +1,16 @@
+// Variables
 @import '_variables.scss';
+
+// Fonts
+@import url('https://fonts.bunny.net/css?family=Nunito');
+
+// Bootstrap
+@import 'bootstrap/scss/bootstrap';
+@import "bootstrap-icons/font/bootstrap-icons.css";
+
+
+
+// General styles
+* {
+  font-family:              $font-family-sans-serif;
+}

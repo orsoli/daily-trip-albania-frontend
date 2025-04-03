@@ -1,31 +1,39 @@
 <script>
+import AppLoader from "@/components/AppLoader.vue";
+
 export default {
+  name: "Home",
   data() {
     return {
       title: "Daily Trip Albania",
     };
   },
 
-  components: {},
+  components: {
+    AppLoader,
+  },
 
   methods: {},
 };
 </script>
 
 <template>
-  <div class="img-bg">
-    <h1 class="text-light">{{ title }}</h1>
+  <!-- Loader section -->
+  <!-- <section>
+    <AppLoader />
+  </section> -->
+
+  <!-- Main section -->
+  <div>
+    <h1 class="text-primary">{{ title }}</h1>
   </div>
 </template>
 
-<style lang="scss" scoped>
-@import "../style/variables.scss";
+<style lang="scss">
+@use "../style/general.scss" as *;
+@use "bootstrap/scss/bootstrap.scss" as *;
 
-.img-bg {
-  width: 100vw;
-  height: 100vh;
-  background-image: url("src/assets/img/3_islands_ksamil_Albania.webp");
-  background-size: cover;
-  background-position: center;
+body {
+  background-image: $my-bg-img;
 }
 </style>

@@ -1,13 +1,12 @@
 <script setup>
-import Home from "./pages/Home.vue";
-import { RouterLink, RouterView } from "vue-router";
+import AppHeader from "./components/AppHeader.vue";
 </script>
 
 <template>
-  <Home />
+  <AppHeader />
+  <main>
+    <RouterView />
+  </main>
 </template>
 
-<style lang="scss">
-@use "bootstrap/scss/bootstrap.scss" as *;
-@use "./style/general.scss" as *;
-</style>
+<style lang="scss"></style>
