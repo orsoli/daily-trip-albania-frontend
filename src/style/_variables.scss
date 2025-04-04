@@ -36,12 +36,8 @@ $margin-50:         50px;
 $primary:                   $poseidon;
 $secondary:                 lighten($primary, 40%);
 $app-logo:                  url("../assets/img/DailyTrip-logo.png");
-$my-bg-img:                 url("../assets/img/3_islands_ksamil_Albania.webp");
-$my-card-shadow:            5px 10px 20px $primary;
-$user-logo-shadow:          0 2px 5px 0 $primary;
-$my-border:                 1px solid $secondary;
-$my-opacity:                rgba($color: #000000, $alpha: 0.4);
-$my-blur:                   blur(5px);
+$my-bg-img:                 url("../assets/img/boat-trip-background.png");
+$mobile-bg-img:             url("../assets/img/mobile-bg.png");
 
 // Typography
 $font-family-sans-serif:   'Playfair Display', serif;

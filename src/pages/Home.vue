@@ -25,15 +25,22 @@ export default {
 
   <!-- Main section -->
   <div>
-    <h1 class="text-primary">{{ $t("app_name") }}</h1>
+    <h1 class="text-secondary">{{ $t("app_name") }}</h1>
   </div>
 </template>
 
 <style lang="scss">
 @use "../style/general.scss" as *;
-@use "bootstrap/scss/bootstrap.scss" as *;
 
-// body {
-//   background-image: $my-bg-img;
-// }
+body {
+  flex-grow: 1;
+  background-image: $my-bg-img;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  @media (max-width: 768px) {
+    background-image: $mobile-bg-img; // mobile image
+  }
+}
 </style>

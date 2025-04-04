@@ -1,4 +1,9 @@
+// Import styles and bootstrap
 import "../style/general.scss";
+import "bootstrap/dist/css/bootstrap.css";
+import "bootstrap-icons/font/bootstrap-icons.css";
+import "bootstrap/dist/js/bootstrap.bundle.js";
+import "bootstrap";
 
 import { createApp } from "vue";
 import App from "../App.vue";
