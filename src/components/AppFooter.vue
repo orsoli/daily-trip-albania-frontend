@@ -11,7 +11,7 @@ export default {
 </script>
 
 <template>
-  <div class="footer">
+  <div class="footer bg-black">
     <h1 class="text-light">Footer</h1>
   </div>
 </template>

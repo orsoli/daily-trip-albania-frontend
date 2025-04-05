@@ -1,29 +1,45 @@
-<script setup>
+<script>
+import { useI18n } from "vue-i18n";
+import { useRouter } from "vue-router";
+import { useHead } from "@vueuse/head";
+import { watch } from "vue";
+
 import AppHeader from "./components/AppHeader.vue";
 import AppFooter from "./components/AppFooter.vue";
+
+export default {
+  name: "App",
+  components: {
+    AppHeader,
+    AppFooter,
+  },
+  setup() {
+    const { t } = useI18n();
+    const router = useRouter();
+
+    const head = useHead({
+      title: t("app_title"),
+    });
+
+    watch(
+      () => router.currentRoute.value.meta.titleKey,
+      (titleKey) => {
+        head.title = t(titleKey || "app_title");
+      },
+      { immediate: true }
+    );
+  },
+};
 </script>
 
 <template>
-  <div class="container my-2">
-    <AppHeader class="position-sticky top-0" />
-    <main>
-      <RouterView />
-    </main>
-    <AppFooter />
-  </div>
+  <AppHeader />
+  <main>
+    <RouterView />
+  </main>
+  <AppFooter />
 </template>
 
 <style lang="scss">
 @use "./style/general.scss" as *;
-
-.container {
-  width: 100vw;
-  height: 100vh;
-  flex-direction: column;
-  overflow-y: scroll;
-  background-color: rgba($primary, 0.6);
-  border: 2px solid $secondary;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba($secondary, 0.5);
-}
 </style>

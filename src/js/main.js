@@ -8,24 +8,15 @@ import "bootstrap";
 import { createApp } from "vue";
 import App from "../App.vue";
 import router from "../router";
-import { createI18n } from "vue-i18n";
+import i18n from "../i18n/index.js";
 
-// Import translates languages
-import en from "../locales/en/static.json";
-import sq from "../locales/sq/static.json";
-
-const i18n = createI18n({
-  legacy: false,
-  globalInjection: true,
-  locale: "en", // Selected language
-  messages: {
-    en, // English
-    sq, // Albanian
-  },
-});
+import { createHead } from "@vueuse/head";
 
 const app = createApp(App);
+const head = createHead();
+
 app.use(router);
 app.use(i18n);
+app.use(head);
 
 app.mount("#app");
