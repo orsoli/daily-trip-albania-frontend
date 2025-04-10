@@ -14,6 +14,10 @@ const router = createRouter({
   routes: [
     {
       path: "/",
+      redirect: "/en",
+    },
+    {
+      path: "/:lang",
       name: "home",
       component: Home,
       meta: {
@@ -21,7 +25,7 @@ const router = createRouter({
       },
     },
     {
-      path: "/tours",
+      path: "/:lang/tours",
       name: "tours",
       component: Tours,
       meta: {
@@ -29,7 +33,7 @@ const router = createRouter({
       },
     },
     {
-      path: "/destinations",
+      path: "/:lang/destinations",
       name: "destinations",
       component: Destinations,
       meta: {
@@ -37,7 +41,7 @@ const router = createRouter({
       },
     },
     {
-      path: "/accommodations",
+      path: "/:lang/accommodations",
       name: "accommodations",
       component: Accommodations,
       meta: {
@@ -45,15 +49,15 @@ const router = createRouter({
       },
     },
     {
-      path: "/about",
-      name: "about",
+      path: "/:lang/about_us",
+      name: "about_us",
       component: About,
       meta: {
-        titleKey: "about",
+        titleKey: "about_us",
       },
     },
     {
-      path: "/contact",
+      path: "/:lang/contact",
       name: "contact",
       component: Contact,
       meta: {
@@ -64,10 +68,32 @@ const router = createRouter({
 });
 
 router.beforeEach((to, from, next) => {
-  const { t } = i18n.global;
+  const { t, availableLocales } = i18n.global;
   const titleKey = to.meta.titleKey || "app_title";
+  document.title =
+    titleKey === "home" ? t("app_title") : `${t(titleKey)} - ${t("app_title")}`;
 
-  document.title = `${t(titleKey)} - ${t("app_title")}`;
+  let lang = to.params.lang;
+
+  const supportedLanguages = availableLocales;
+
+  // If lang is missing in the URL, try to retrieve it from localStorage
+  if (!lang) {
+    lang = localStorage.getItem("lang") || "en";
+    return next({ ...to, params: { ...to.params, lang } });
+  }
+
+  // If the language is not supported, redirect to /en
+  if (!supportedLanguages.includes(lang)) {
+    return next("/en");
+  }
+
+  // Save the language in localStorage
+  localStorage.setItem("lang", lang);
+
+  // Set the language in i18n
+  i18n.global.locale.value = lang;
+
   next();
 });
 

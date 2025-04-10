@@ -1,14 +1,17 @@
 <script>
-import { Transition } from "vue";
+import { availableLanguages } from "../i18n/index.js";
 
 export default {
   name: "AppHeader",
   data() {
     return {
+      // Variables
+      availableLanguages,
+
       headerList: [
         {
           text: "home",
-          url: "/",
+          url: "",
         },
         {
           text: "tours",
@@ -23,25 +26,12 @@ export default {
           url: "accommodations",
         },
         {
-          text: "about",
-          url: "about",
+          text: "about_us",
+          url: "about_us",
         },
         {
           text: "contact",
           url: "contact",
-        },
-      ],
-
-      languages: [
-        {
-          code: "en",
-          name: "English",
-          icon: "🇬🇧",
-        },
-        {
-          code: "sq",
-          name: "Albanian",
-          icon: "🇦🇱",
         },
       ],
     };
@@ -51,12 +41,17 @@ export default {
 
   computed: {
     translatedHeaders() {
+      const lang = this.$i18n.locale;
       return this.headerList.map((header) => ({
         text: this.$t(header.text),
-        url: header.url,
+        url: {
+          name: header.text,
+          params: { lang: this.$i18n.locale },
+        },
       }));
     },
   },
+
   watch: {
     "$i18n.locale"() {
       this.$forceUpdate();
@@ -64,8 +59,14 @@ export default {
   },
 
   methods: {
-    changeLanguage(lang) {
-      this.$i18n.locale = lang;
+    changeLanguage(newLang) {
+      this.$i18n.locale = newLang;
+
+      const pathParts = this.$route.path.split("/");
+      pathParts[1] = newLang;
+      const newPath = pathParts.join("/");
+
+      this.$router.push(newPath);
     },
   },
 };
@@ -75,8 +76,15 @@ export default {
   <header class="sticky-top bg-primary">
     <nav class="navbar navbar-expand-lg">
       <div class="container d-flex justify-content-between gap-2">
-        <router-link class="navbar-brand" :to="{ name: 'home' }">
-          <img src="../assets/img/DailyTrip-logo.png" alt="logo" class="logo" />
+        <router-link
+          class="navbar-brand"
+          :to="{ name: 'home', params: { lang: $i18n.locale } }"
+        >
+          <img
+            src="../assets/img/DailyTrip-logo.png"
+            alt="daily-trip-albania-logo"
+            class="logo"
+          />
         </router-link>
         <button
           class="navbar-toggler"
@@ -114,18 +122,19 @@ export default {
           </div>
           <div class="language py-3 w-auto">
             <select
+              v-model="$i18n.locale"
               class="form-select bg-transparent border-0 text-light"
               name="lang"
               id="lang"
               @change="changeLanguage($event.target.value)"
             >
               <option
-                v-for="(language, i) in languages"
-                :key="i"
-                :value="language.code"
+                v-for="lang in availableLanguages"
+                :key="lang.code"
+                :value="lang.code"
               >
-                {{ language.icon }}
-                {{ language.name }}
+                {{ lang.flag }}
+                {{ lang.label }}
               </option>
             </select>
           </div>

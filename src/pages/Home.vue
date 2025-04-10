@@ -197,6 +197,7 @@ h1 {
   font-size: 50px;
   font-weight: 700;
   background-image: $my-bg-img;
+  background-clip: text;
   -webkit-background-clip: text;
   color: transparent;
 }

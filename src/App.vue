@@ -2,7 +2,7 @@
 import { useI18n } from "vue-i18n";
 import { useRouter } from "vue-router";
 import { useHead } from "@vueuse/head";
-import { watch } from "vue";
+import { watch, onMounted } from "vue";
 
 import AppHeader from "./components/AppHeader.vue";
 import AppFooter from "./components/AppFooter.vue";
@@ -14,20 +14,25 @@ export default {
     AppFooter,
   },
   setup() {
-    const { t } = useI18n();
+    // Initialize i18n and router
+    const { t, locale } = useI18n();
     const router = useRouter();
 
-    const head = useHead({
-      title: t("app_title"),
+    // Initialize head title
+    const head = useHead({ titleKey: "" });
+
+    onMounted(() => {
+      const lang = localStorage.getItem("lang") || "en";
+      locale.value = lang;
     });
 
-    watch(
-      () => router.currentRoute.value.meta.titleKey,
-      (titleKey) => {
-        head.title = t(titleKey || "app_title");
-      },
-      { immediate: true }
-    );
+    // Update Title based on route and locale function
+    const updateTitle = () => {
+      const titleKey = router.currentRoute.value.meta.titleKey || "app_title";
+      head.title = t(titleKey);
+    };
+
+    watch(locale, updateTitle);
   },
 };
 </script>

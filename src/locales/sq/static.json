@@ -1,11 +1,13 @@
 {
-    "home": "Kryefaqja",
+    "home": "Kreu",
     "tours": "Ekskursione",
     "destinations": "Destinacione",
     "accommodations": "Akomodime",
-    "about": "Rreth nesh",
+    "about_us": "Rreth Nesh",
     "contact": "Kontakt",
 
-    "app_title": "Daily Trip Albania - Ekskursione dhe Aventurë në Shqipëri"
+    "app_title": "Daily Trip Albania - Ekskursione dhe Aventurë në Shqipëri",
+
+    "footer": "© {year} Daily Trip Albania. Të drejtat e rezervuara."
 
 }

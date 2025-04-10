@@ -1,7 +1,10 @@
 <script>
 export default {
   data() {
-    return {};
+    return {
+      // Variables
+      currentYear: new Date().getFullYear(),
+    };
   },
 
   components: {},
@@ -12,7 +15,10 @@ export default {
 
 <template>
   <div class="footer bg-black">
-    <h1 class="text-light">Footer</h1>
+    <h6 class="text-light text-center">
+      {{ $t("footer", { year: currentYear }) }}
+    </h6>
+    <!-- <h3>{{ $i18n.datetimeFormats }}</h3> -->
   </div>
 </template>
 

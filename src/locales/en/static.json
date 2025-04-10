@@ -3,8 +3,23 @@
     "tours": "Tours",
     "destinations": "Destinations",
     "accommodations": "Accommodations",
-    "about": "About Us",
+    "about_us": "About Us",
     "contact": "Contact",
 
-    "app_title": "Daily Trip Albania - Tours & Adventures in Albania"
+    "datetimeFormats": {
+        "short": {
+            "year": "numeric",
+            "month": "2-digit",
+            "day": "2-digit"
+        },
+        "long": {
+            "year": "numeric",
+            "month": "long",
+            "day": "2-digit"
+        }
+    },
+
+    "app_title": "Daily Trip Albania - Tours & Adventures in Albania",
+
+    "footer": "© {year} Daily Trip Albania. All rights reserved."
 }
