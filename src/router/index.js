@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from "vue-router";
 
 import i18n from "../i18n/index.js";
+import { routesByLanguage } from "../i18n/routesMap.js";
 
 import Home from "../pages/Home.vue";
 import Tours from "../pages/Tours.vue";

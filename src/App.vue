@@ -40,6 +40,7 @@ export default {
 <template>
   <AppHeader />
   <main>
+    <h5>{{ $d(new Date(), "short") }}</h5>
     <RouterView />
   </main>
   <AppFooter />

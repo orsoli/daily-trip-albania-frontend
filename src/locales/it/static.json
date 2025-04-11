@@ -1,10 +1,10 @@
 {
     "home": "Home",
-    "tours": "Tours",
-    "destinations": "Destinations",
-    "accommodations": "Accommodations",
-    "about_us": "About Us",
-    "contact": "Contact",
+    "tours": "Tour",
+    "destinations": "Destinazioni",
+    "accommodations": "Alloggi",
+    "about_us": "Chi siamo",
+    "contact": "Contatti",
 
     "datetimeFormats": {
         "short": {
@@ -19,7 +19,7 @@
         }
     },
 
-    "app_title": "Daily Trip Albania - Tours & Adventures in Albania",
+    "app_title": "Daily Trip Albania - Tour e Avventure in Albania",
 
-    "footer": "© {year} Daily Trip Albania. All rights reserved."
+    "footer": "© {year} Daily Trip Albania. Tutti i diritti riservati."
 }

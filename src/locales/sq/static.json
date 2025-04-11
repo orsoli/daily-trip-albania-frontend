@@ -1,10 +1,49 @@
 {
     "home": "Kreu",
-    "tours": "Ekskursione",
+    "tours": "Turet",
     "destinations": "Destinacione",
     "accommodations": "Akomodime",
     "about_us": "Rreth Nesh",
     "contact": "Kontakt",
+
+    "datetimeFormats": {
+        "short": {
+            "year": "numeric",
+            "month": "short",
+            "day": "2-digit"
+        },
+        "long": {
+            "year": "numeric",
+            "month": "long",
+            "day": "2-digit"
+        }
+    },
+
+    "months": {
+        "jan": "Janar",
+        "feb": "Shkurt",
+        "mar": "Mars",
+        "apr": "Prill",
+        "may": "Maj",
+        "jun": "Qershor",
+        "jul": "Korrik",
+        "aug": "Gusht",
+        "sep": "Shtator",
+        "oct": "Tetor",
+        "nov": "Nëntor",
+        "dec": "Dhjetor"
+    },
+
+    "days": {
+        "sun": "Dielë",
+        "mon": "Hënë",
+        "tue": "Martë",
+        "wed": "Mërkurë",
+        "thu": "Enjte",
+        "fri": "Premte",
+        "sat": "Shtunë"
+    },
+
 
     "app_title": "Daily Trip Albania - Ekskursione dhe Aventurë në Shqipëri",
 
