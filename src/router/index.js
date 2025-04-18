@@ -1,7 +1,7 @@
 import { createRouter, createWebHistory } from "vue-router";
 
 import i18n from "../i18n/index.js";
-import { routesByLanguage } from "../i18n/routesMap.js";
+import { routesByLanguage } from "../locales/routesMap.js";
 
 import Home from "../pages/Home.vue";
 import Tours from "../pages/Tours.vue";
@@ -10,62 +10,71 @@ import About from "../pages/About.vue";
 import Contact from "../pages/Contact.vue";
 import Destinations from "../pages/Destinations.vue";
 
+const routes = [
+  {
+    path: "/",
+    redirect: `/${i18n.global.locale.value}`,
+  },
+  {
+    path: "/:lang",
+    name: "home",
+    component: Home,
+    meta: {
+      titleKey: "home",
+    },
+  },
+  {
+    path: `/:lang/tours`,
+    name: "tours",
+    component: Tours,
+    meta: {
+      titleKey: "tours",
+    },
+  },
+  {
+    path: "/:lang/destinations",
+    name: "destinations",
+    component: Destinations,
+    meta: {
+      titleKey: "destinations",
+    },
+  },
+  {
+    path: "/:lang/accommodations",
+    name: "accommodations",
+    component: Accommodations,
+    meta: {
+      titleKey: "accommodations",
+    },
+  },
+  {
+    path: "/:lang/about-us",
+    name: "aboutUs",
+    component: About,
+    meta: {
+      titleKey: "about_us",
+    },
+  },
+  {
+    path: "/:lang/contacts",
+    name: "contacts",
+    component: Contact,
+    meta: {
+      titleKey: "contacts",
+    },
+  },
+];
+
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
-  routes: [
-    {
-      path: "/",
-      redirect: "/en",
-    },
-    {
-      path: "/:lang",
-      name: "home",
-      component: Home,
-      meta: {
-        titleKey: "home",
-      },
-    },
-    {
-      path: "/:lang/tours",
-      name: "tours",
-      component: Tours,
-      meta: {
-        titleKey: "tours",
-      },
-    },
-    {
-      path: "/:lang/destinations",
-      name: "destinations",
-      component: Destinations,
-      meta: {
-        titleKey: "destinations",
-      },
-    },
-    {
-      path: "/:lang/accommodations",
-      name: "accommodations",
-      component: Accommodations,
-      meta: {
-        titleKey: "accommodations",
-      },
-    },
-    {
-      path: "/:lang/about_us",
-      name: "about_us",
-      component: About,
-      meta: {
-        titleKey: "about_us",
-      },
-    },
-    {
-      path: "/:lang/contact",
-      name: "contact",
-      component: Contact,
-      meta: {
-        titleKey: "contact",
-      },
-    },
-  ],
+  routes,
+  scrollBehavior(to, from, savedPosition) {
+    if (savedPosition) {
+      return savedPosition;
+    } else {
+      return { top: 0, left: 0, behavior: "smooth" };
+    }
+  },
 });
 
 router.beforeEach((to, from, next) => {
@@ -75,6 +84,12 @@ router.beforeEach((to, from, next) => {
     titleKey === "home" ? t("app_title") : `${t(titleKey)} - ${t("app_title")}`;
 
   let lang = to.params.lang;
+
+  // Variables to store the routes for each language
+  const routeByLang = routesByLanguage[lang];
+  console.log(routeByLang);
+  to.path = `/${lang}/${routeByLang[to.name]}`;
+  console.log(to.path);
 
   const supportedLanguages = availableLocales;
 

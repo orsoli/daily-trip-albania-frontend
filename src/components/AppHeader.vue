@@ -11,7 +11,7 @@ export default {
       headerList: [
         {
           text: "home",
-          url: "",
+          url: "home",
         },
         {
           text: "tours",
@@ -27,11 +27,11 @@ export default {
         },
         {
           text: "about_us",
-          url: "about_us",
+          url: "aboutUs",
         },
         {
-          text: "contact",
-          url: "contact",
+          text: "contacts",
+          url: "contacts",
         },
       ],
     };
@@ -43,10 +43,10 @@ export default {
     translatedHeaders() {
       const lang = this.$i18n.locale;
       return this.headerList.map((header) => ({
-        text: this.$t(header.text),
+        navBar: this.$t(header.text),
         url: {
-          name: header.text,
-          params: { lang: this.$i18n.locale },
+          name: header.url,
+          params: { lang: lang },
         },
       }));
     },
@@ -108,7 +108,7 @@ export default {
               :key="i"
             >
               <router-link class="nav-link text-light" :to="header.url">
-                {{ header.text }}
+                {{ header.navBar }}
               </router-link>
             </li>
           </ul>
