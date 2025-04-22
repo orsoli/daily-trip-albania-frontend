@@ -15,19 +15,19 @@
   font-family:              $font-family-sans-serif;
 }
 
-// body{
-//   width:                    100vw;
-//   height:                   100vh;
-//   background-image:         $my-bg-img;
-//   background-size:          cover;
-//   background-position:      center;
-//   background-repeat:        no-repeat;
-//   backdrop-filter: blur(5px);
+body{
+  width:                    100vw;
+  height:                   100vh;
+  background-image:         $my-bg-img;
+  background-size:          cover;
+  background-position:      center;
+  background-repeat:        no-repeat;
+  backdrop-filter: blur(5px);
 
-//   @media (max-width: 768px) {
-//     background-image:       $mobile-bg-img; // mobile image
-//   }
-// }
+  @media (max-width: 768px) {
+    background-image:       $mobile-bg-img; // mobile image
+  }
+}
 
 main{
   flex-grow: 1;

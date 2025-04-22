@@ -191,14 +191,4 @@ export default {
   </div>
 </template>
 
-<style lang="scss" scoped>
-@use "@/style/general.scss" as *;
-h1 {
-  font-size: 50px;
-  font-weight: 700;
-  background-image: $my-bg-img;
-  background-clip: text;
-  -webkit-background-clip: text;
-  color: transparent;
-}
-</style>
+<style lang="scss" scoped></style>

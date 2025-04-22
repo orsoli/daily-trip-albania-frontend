@@ -85,12 +85,6 @@ router.beforeEach((to, from, next) => {
 
   let lang = to.params.lang;
 
-  // Variables to store the routes for each language
-  const routeByLang = routesByLanguage[lang];
-  console.log(routeByLang);
-  to.path = `/${lang}/${routeByLang[to.name]}`;
-  console.log(to.path);
-
   const supportedLanguages = availableLocales;
 
   // If lang is missing in the URL, try to retrieve it from localStorage

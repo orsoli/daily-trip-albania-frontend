@@ -73,7 +73,7 @@ export default {
 </script>
 
 <template>
-  <header class="sticky-top bg-primary">
+  <header class="sticky-top bg-transparent">
     <nav class="navbar navbar-expand-lg">
       <div class="container d-flex justify-content-between gap-2">
         <router-link
