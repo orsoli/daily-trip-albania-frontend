@@ -3,41 +3,44 @@ import { availableLanguages } from "../i18n/index.js";
 
 export default {
   name: "AppHeader",
+  props: {
+    isScrolled: {
+      type: Boolean,
+      required: true,
+    },
+  },
   data() {
     return {
       // Variables
+      isMenuOpen: false,
       availableLanguages,
-
       headerList: [
+        { text: "home", url: "home" },
+        { text: "tours", url: "tours" },
+        { text: "destinations", url: "destinations" },
+        { text: "accommodations", url: "accommodations" },
+        { text: "about_us", url: "aboutUs" },
+        { text: "contacts", url: "contacts" },
+      ],
+      socialList: [
         {
-          text: "home",
-          url: "home",
+          name: "Instagram",
+          icon: "<i class='bi bi-instagram'></i>",
+          url: "https://www.instagram.com/dailytrip.albania/",
         },
         {
-          text: "tours",
-          url: "tours",
+          name: "TikTok",
+          icon: "<i class='bi bi-tiktok'></i>",
+          url: "https://www.tiktok.com/@dailytripalbania?_t=ZM-8vlxVOeDQpT&_r=1",
         },
         {
-          text: "destinations",
-          url: "destinations",
-        },
-        {
-          text: "accommodations",
-          url: "accommodations",
-        },
-        {
-          text: "about_us",
-          url: "aboutUs",
-        },
-        {
-          text: "contacts",
-          url: "contacts",
+          name: "Youtube",
+          icon: "<i class='bi bi-youtube text-danger'></i>",
+          url: "https://www.youtube.com/@dailytripalbania",
         },
       ],
     };
   },
-
-  components: {},
 
   computed: {
     translatedHeaders() {
@@ -61,19 +64,22 @@ export default {
   methods: {
     changeLanguage(newLang) {
       this.$i18n.locale = newLang;
-
       const pathParts = this.$route.path.split("/");
       pathParts[1] = newLang;
-      const newPath = pathParts.join("/");
-
-      this.$router.push(newPath);
+      this.$router.push(pathParts.join("/"));
+    },
+    toggleMenu() {
+      this.isMenuOpen = !this.isMenuOpen;
+    },
+    closeMenu() {
+      this.isMenuOpen = false;
     },
   },
 };
 </script>
 
 <template>
-  <header class="sticky-top bg-transparent">
+  <header :class="['sticky-top', isScrolled ? 'bg-blured' : 'bg-transparent']">
     <nav class="navbar navbar-expand-lg">
       <div class="container d-flex justify-content-between gap-2">
         <router-link
@@ -89,111 +95,114 @@ export default {
         <button
           class="navbar-toggler"
           type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarSupportedContent"
+          @click="toggleMenu"
           aria-controls="navbarSupportedContent"
-          aria-expanded="false"
+          :aria-expanded="isMenuOpen.toString()"
           aria-label="Toggle navigation"
         >
           <span class="navbar-toggler-icon"></span>
         </button>
-        <div
-          class="collapse navbar-collapse d-lg-flex justify-content-between gap-2"
-          id="navbarSupportedContent"
-        >
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li
-              class="nav-item"
-              v-for="(header, i) in translatedHeaders"
-              :key="i"
-            >
-              <router-link class="nav-link text-light" :to="header.url">
-                {{ header.navBar }}
-              </router-link>
-            </li>
-          </ul>
-          <div class="search">
-            <input
-              class="form-control me-2 bg-transparent text-light placeholder-light"
-              type="search"
-              placeholder="Search"
-              aria-label="Search"
-            />
-          </div>
-          <div class="language py-3 w-auto">
-            <select
-              v-model="$i18n.locale"
-              class="form-select bg-transparent border-0 text-light"
-              name="lang"
-              id="lang"
-              @change="changeLanguage($event.target.value)"
-            >
-              <option
-                v-for="lang in availableLanguages"
-                :key="lang.code"
-                :value="lang.code"
+        <!-- Menu -->
+        <transition name="fade" mode="out-in">
+          <div
+            v-show="isMenuOpen"
+            class="collapse navbar-collapse fw-bold p-3 rounded-3 d-lg-flex justify-content-between gap-2 w-auto"
+            :class="{ show: isMenuOpen }"
+            id="navbarSupportedContent"
+          >
+            <!-- Navbars -->
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li
+                class="nav-item"
+                v-for="(header, i) in translatedHeaders"
+                :key="i"
               >
-                {{ lang.flag }}
-                {{ lang.label }}
-              </option>
-            </select>
-          </div>
-        </div>
-      </div>
-    </nav>
-  </header>
-
-  <!-- ! -->
-  <!-- <header> -->
-  <!-- <nav class="navbar-nav"> -->
-  <!-- Left Side -->
-  <!-- <div class="left-navs">
-            <ul class="list-unstyled d-flex gap-3">
-              <li>
                 <router-link
-                  :to="{ name: 'home' }"
-                  class="nav-link active"
-                  aria-current="page"
+                  class="nav-link text-light text-nowrap text-shadow"
+                  :to="header.url"
+                  @click="closeMenu"
                 >
-                  <img
-                    src="../assets/img/DailyTrip-logo.png"
-                    alt="logo"
-                    class="logo"
-                  />
-                </router-link>
-              </li>
-              <li v-for="(header, i) in translatedHeaders" :key="i">
-                <router-link :to="header.url">
-                  {{ header.text }}
+                  {{ header.navBar }}
                 </router-link>
               </li>
             </ul>
-          </div> -->
-  <!-- Right Side -->
-  <!-- <div class="language">
-            <select
-              name="lang"
-              id="lang"
-              @change="changeLanguage($event.target.value)"
+            <!-- Socials -->
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item" v-for="(social, i) in socialList" :key="i">
+                <a
+                  class="nav-link text-light text-nowrap text-shadow"
+                  :href="social.url"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <span v-html="social.icon"></span>
+                </a>
+              </li>
+            </ul>
+            <!-- Search input -->
+            <div class="text-light">
+              <input
+                type="text"
+                class="form-control rounded-4 bg-transparent text-light text-shadow me-5"
+                placeholder="Search"
+                aria-label="Search"
+              />
+            </div>
+            <!-- Language selector -->
+            <div
+              class="language w-auto position-absolute end-0 my-bg-primary rounded-start-4"
             >
-              <option
-                v-for="(language, i) in languages"
-                :key="i"
-                :value="language.code"
+              <select
+                v-model="$i18n.locale"
+                class="form-select no-arrow bg-transparent border-0 text-light text-shadow w-auto"
+                name="lang"
+                id="lang"
+                @change="changeLanguage($event.target.value)"
               >
-                {{ language.name }}
-              </option>
-            </select>
+                <option
+                  v-for="lang in availableLanguages"
+                  :key="lang.code"
+                  :value="lang.code"
+                >
+                  {{ lang.flag }}
+                  {{ lang.label }}
+                </option>
+              </select>
+            </div>
           </div>
-        </nav>
-      </header> -->
-  <!-- ! -->
+        </transition>
+      </div>
+    </nav>
+  </header>
 </template>
 
 <style lang="scss" scoped>
-@use "../style/general.scss" as *;
 .logo {
-  width: 50px;
-  height: 50px;
+  width: 70px;
+  height: 70px;
+  filter: drop-shadow(0 0 2px rgb(3, 3, 3));
+}
+
+.bg-blured {
+  backdrop-filter: blur(4px);
+  transition: background-color 1s ease-in;
+  border-radius: 20px;
+}
+
+.bg-transparent {
+  background-color: transparent;
+  transition: background-color 0.3s ease;
+}
+
+.text-shadow {
+  text-shadow: 0 0 2px rgb(0, 0, 0);
+}
+
+.no-arrow {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: none;
+  cursor: pointer;
 }
 </style>

@@ -22,15 +22,17 @@ body{
   background-size:          cover;
   background-position:      center;
   background-repeat:        no-repeat;
-  backdrop-filter: blur(5px);
+  backdrop-filter:          blur(5px);
 
   @media (max-width: 768px) {
-    background-image:       $mobile-bg-img; // mobile image
+    background-image:       $mobile-bg-img;
+
   }
 }
 
 main{
   flex-grow: 1;
+  overflow-y: scroll;
 }
 
 img {
@@ -44,4 +46,15 @@ img {
 
 .text-secondary {
   color:                    $secondary;
+}
+
+.my-bg-primary {
+  background-color:         $primary;
+}
+
+.fade-enter-active, .fade-leave-active {
+  transition: opacity 2s ease;
+}
+.fade-enter-from, .fade-leave-to {
+  opacity: 0;
 }

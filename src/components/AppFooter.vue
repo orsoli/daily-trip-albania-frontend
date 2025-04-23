@@ -14,7 +14,7 @@ export default {
 </script>
 
 <template>
-  <div class="footer bg-black">
+  <div class="footer">
     <h6 class="text-light text-center">
       {{ $t("footer", { year: currentYear }) }}
     </h6>
