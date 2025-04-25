@@ -18,21 +18,26 @@
 body{
   width:                    100vw;
   height:                   100vh;
-  background-image:         $my-bg-img;
+  // background-image:         $my-bg-img;
+
+  overflow-y: scroll;
+  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0)), $my-bg-img;
+
   background-size:          cover;
   background-position:      center;
   background-repeat:        no-repeat;
-  backdrop-filter:          blur(5px);
 
   @media (max-width: 768px) {
-    background-image:       $mobile-bg-img;
+    // background-image:       $mobile-bg-img;
+
+     background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0)), $mobile-bg-img;
 
   }
 }
 
 main{
   flex-grow: 1;
-  overflow-y: scroll;
+  // overflow-y: scroll;
 }
 
 img {

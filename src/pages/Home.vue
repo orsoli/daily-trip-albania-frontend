@@ -22,9 +22,7 @@ export default {
   <!-- <section>
     <AppLoader />
   </section> -->
-
-  <!-- Main section -->
-  <div class="container text-light overflow-scroll">
+  <div class="container text-light">
     <h1>{{ $t("app_title") }}</h1>
     <p>
       lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod

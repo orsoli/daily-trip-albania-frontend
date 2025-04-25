@@ -79,9 +79,11 @@ export default {
 
     toggleSearch() {
       this.search = !this.search;
-      this.$nextTick(() => {
-        this.$refs.searchInput.focus();
-      });
+      if (this.search) {
+        this.$nextTick(() => {
+          this.$refs.searchInput.focus();
+        });
+      }
     },
   },
 };
@@ -90,7 +92,9 @@ export default {
 <template>
   <header :class="['sticky-top', isScrolled ? 'bg-blured' : 'bg-transparent']">
     <nav class="navbar navbar-expand-lg">
-      <div class="container d-flex justify-content-between gap-2">
+      <div
+        class="container w-lg-75 mx-auto d-lg-flex justify-content-between gap-lg-5"
+      >
         <router-link
           class="navbar-brand"
           :to="{ name: 'home', params: { lang: $i18n.locale } }"
@@ -115,12 +119,12 @@ export default {
         <transition name="fade" mode="out-in">
           <div
             v-show="isMenuOpen"
-            class="collapse navbar-collapse fw-bold p-3 rounded-3 d-lg-flex justify-content-between gap-2 w-auto"
+            class="collapse navbar-collapse fw-bold rounded-3 d-lg-flex justify-content-between gap-5 pe-5"
             :class="{ show: isMenuOpen }"
             id="navbarSupportedContent"
           >
             <!-- Navbars -->
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <ul class="navbar-nav mb-3 mb-lg-0">
               <li
                 class="nav-item"
                 v-for="(header, i) in translatedHeaders"
@@ -136,7 +140,7 @@ export default {
               </li>
             </ul>
             <!-- Socials -->
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <ul v-if="!search" class="d-flex list-unstyled gap-2 gap-lg-4 m-0">
               <li class="nav-item" v-for="(social, i) in socialList" :key="i">
                 <a
                   class="nav-link text-light text-nowrap text-shadow"
@@ -157,7 +161,7 @@ export default {
                 <input
                   ref="searchInput"
                   type="text"
-                  class="form-control border-0 bg-transparent text-light text-shadow me-5"
+                  class="form-control border-0 rounded-4 bg-transparent text-light text-shadow me-5"
                   :placeholder="$t('search_placeholder')"
                   aria-label="Search"
                   id="search"
@@ -204,6 +208,7 @@ export default {
 </template>
 
 <style lang="scss" scoped>
+@use "../style/general.scss" as *;
 .logo {
   width: 70px;
   height: 70px;
@@ -211,14 +216,15 @@ export default {
 }
 
 .bg-blured {
-  backdrop-filter: blur(4px);
-  transition: background-color 1s ease-in;
-  border-radius: 20px;
+  background-color: rgba(black, 0.5);
+  backdrop-filter: blur(5px);
+  transition: background-color 0.8s ease-in-out, backdrop-filter 1s ease-in-out,
+    box-shadow 0.8s ease-in-out;
+  box-shadow: 0 0 10px 3px rgba(2, 2, 2, 0.8);
 }
 
 .bg-transparent {
   background-color: transparent;
-  transition: background-color 0.3s ease;
 }
 
 .text-shadow {
@@ -236,5 +242,18 @@ export default {
 #search::placeholder {
   color: white;
   opacity: 0.5;
+}
+
+.nav-link {
+  transition: all 0.3s ease;
+}
+
+.nav-link:hover {
+  color: $secondary !important;
+  scale: 1.1;
+}
+
+:deep(.router-link-active) {
+  color: $secondary !important;
 }
 </style>
