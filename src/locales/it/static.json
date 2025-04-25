@@ -6,6 +6,12 @@
     "about_us": "Chi siamo",
     "contacts": "Contatti",
 
+    "search_placeholder": "Cerca qui...",
+    "search": "Cerca",
+    "search_results": "Risultati di ricerca per \"{query}\"",
+    "search_no_results": "Nessun risultato trovato per \"{query}\"",
+    "search_no_results_description": "Prova a controllare l'ortografia o usa parole chiave diverse.",
+
     "datetimeFormats": {
         "short": {
             "year": "numeric",

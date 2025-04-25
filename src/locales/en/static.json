@@ -1,25 +1,31 @@
 {
-    "home": "Home",
-    "tours": "Tours",
-    "destinations": "Destinations",
-    "accommodations": "Accommodations",
-    "about_us": "About Us",
-    "contacts": "Contacts",
+    "home":                 "Home",
+    "tours":                "Tours",
+    "destinations":         "Destinations",
+    "accommodations":       "Accommodations",
+    "about_us":             "About Us",
+    "contacts":             "Contacts",
+
+    "search":               "Search",
+    "search_placeholder":   "Search here...",
+    "search_results":       "Search results for \"{query}\"",
+    "search_no_results":    "No results found for \"{query}\"",
+    "search_no_results_suggestions": "Try searching for something else or check your spelling.",
 
     "datetimeFormats": {
         "short": {
-            "year": "numeric",
-            "month": "short",
-            "day": "2-digit"
+            "year":         "numeric",
+            "month":        "short",
+            "day":          "2-digit"
         },
         "long": {
-            "year": "numeric",
-            "month": "long",
-            "day": "2-digit"
+            "year":         "numeric",
+            "month":        "long",
+            "day":          "2-digit"
         }
     },
 
-    "app_title": "Daily Trip Albania - Tours & Adventures in Albania",
+    "app_title":            "Daily Trip Albania - Tours & Adventures in Albania",
 
-    "footer": "© {year} Daily Trip Albania. All rights reserved."
+    "footer":               "© {year} Daily Trip Albania. All rights reserved."
 }

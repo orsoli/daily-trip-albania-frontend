@@ -6,6 +6,12 @@
     "about_us": "Rreth Nesh",
     "contacts": "Kontakte",
 
+    "search_placeholder": "Kërko këtu...",
+    "search": "Kërko",
+    "search_results": "Rezultatet e kërkimit për \"{query}\"",
+    "search_no_results": "Nuk u gjet asnjë rezultat për \"{query}\"",
+    "search_no_results_description": "Provo të kontrollosh drejtshkrimin ose përdor fjalë kyçe të ndryshme.",
+
     "datetimeFormats": {
         "short": {
             "year": "numeric",

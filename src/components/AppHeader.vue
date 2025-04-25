@@ -14,6 +14,8 @@ export default {
       // Variables
       isMenuOpen: false,
       availableLanguages,
+      search: false,
+      // Header and social lists
       headerList: [
         { text: "home", url: "home" },
         { text: "tours", url: "tours" },
@@ -73,6 +75,13 @@ export default {
     },
     closeMenu() {
       this.isMenuOpen = false;
+    },
+
+    toggleSearch() {
+      this.search = !this.search;
+      this.$nextTick(() => {
+        this.$refs.searchInput.focus();
+      });
     },
   },
 };
@@ -139,35 +148,53 @@ export default {
                 </a>
               </li>
             </ul>
-            <!-- Search input -->
-            <div class="text-light">
-              <input
-                type="text"
-                class="form-control rounded-4 bg-transparent text-light text-shadow me-5"
-                placeholder="Search"
-                aria-label="Search"
-              />
-            </div>
-            <!-- Language selector -->
+            <!-- Language and search -->
             <div
-              class="language w-auto position-absolute end-0 my-bg-primary rounded-start-4"
+              class="language w-auto position-absolute end-0 my-bg-primary rounded-start-4 shadow"
             >
-              <select
-                v-model="$i18n.locale"
-                class="form-select no-arrow bg-transparent border-0 text-light text-shadow w-auto"
-                name="lang"
-                id="lang"
-                @change="changeLanguage($event.target.value)"
-              >
-                <option
-                  v-for="lang in availableLanguages"
-                  :key="lang.code"
-                  :value="lang.code"
+              <!-- Search input -->
+              <div v-if="search">
+                <input
+                  ref="searchInput"
+                  type="text"
+                  class="form-control border-0 bg-transparent text-light text-shadow me-5"
+                  :placeholder="$t('search_placeholder')"
+                  aria-label="Search"
+                  id="search"
+                  @keyup.enter="toggleSearch"
+                  @blur="toggleSearch"
+                />
+              </div>
+              <!-- Search button -->
+              <div v-if="!search" class="d-flex">
+                <button
+                  class="btn text-light border-end rounded-0"
+                  type="button"
+                  @click="toggleSearch"
                 >
-                  {{ lang.flag }}
-                  {{ lang.label }}
-                </option>
-              </select>
+                  <i class="bi bi-search"></i>
+                </button>
+                <!-- Language selector -->
+                <select
+                  v-model="$i18n.locale"
+                  class="form-select no-arrow bg-transparent border-0 text-light text-center text-shadow w-auto p-0"
+                  name="lang"
+                  id="lang"
+                  @change="changeLanguage($event.target.value)"
+                >
+                  <option
+                    v-for="lang in availableLanguages"
+                    :key="lang.code"
+                    :value="lang.code"
+                  >
+                    {{ lang.flag }}
+                    {{ lang.label }}
+                  </option>
+                </select>
+                <label class="form-label text-light pe-1" for="lang">
+                  <i class="bi bi-translate"></i>
+                </label>
+              </div>
             </div>
           </div>
         </transition>
@@ -204,5 +231,10 @@ export default {
   -moz-appearance: none;
   background-image: none;
   cursor: pointer;
+}
+
+#search::placeholder {
+  color: white;
+  opacity: 0.5;
 }
 </style>
