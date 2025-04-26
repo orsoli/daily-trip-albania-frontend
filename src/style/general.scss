@@ -15,29 +15,29 @@
   font-family:              $font-family-sans-serif;
 }
 
-body{
+.main-wrapper {
   width:                    100vw;
   height:                   100vh;
   // background-image:         $my-bg-img;
-
-  overflow-y: scroll;
   background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0)), $my-bg-img;
-
+  
   background-size:          cover;
   background-position:      center;
   background-repeat:        no-repeat;
-
+  display:                  flex;
+  flex-direction:           column;
+  overflow:                 auto;
+  
   @media (max-width: 768px) {
     // background-image:       $mobile-bg-img;
 
-     background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0)), $mobile-bg-img;
+     background:            linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0)), $mobile-bg-img;
 
   }
 }
 
 main{
   flex-grow: 1;
-  // overflow-y: scroll;
 }
 
 img {
@@ -58,8 +58,8 @@ img {
 }
 
 .fade-enter-active, .fade-leave-active {
-  transition: opacity 2s ease;
+  transition:               opacity 2s ease;
 }
 .fade-enter-from, .fade-leave-to {
-  opacity: 0;
+  opacity:                  0;
 }

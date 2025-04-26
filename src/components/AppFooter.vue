@@ -15,7 +15,7 @@ export default {
 
 <template>
   <div class="footer">
-    <h6 class="text-light text-center">
+    <h6 class="text-center">
       {{ $t("footer", { year: currentYear }) }}
     </h6>
     <!-- <h3>{{ $i18n.datetimeFormats }}</h3> -->

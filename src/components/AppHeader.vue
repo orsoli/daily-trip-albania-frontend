@@ -124,7 +124,7 @@ export default {
             id="navbarSupportedContent"
           >
             <!-- Navbars -->
-            <ul class="navbar-nav mb-3 mb-lg-0">
+            <ul class="navbar-nav ps-3 mb-3 mb-lg-0">
               <li
                 class="nav-item"
                 v-for="(header, i) in translatedHeaders"
@@ -181,7 +181,7 @@ export default {
                 <!-- Language selector -->
                 <select
                   v-model="$i18n.locale"
-                  class="form-select no-arrow bg-transparent border-0 text-light text-center text-shadow w-auto p-0"
+                  class="form-select no-arrow bg-transparent border-0 text-light text-center text-shadow w-auto pe-0"
                   name="lang"
                   id="lang"
                   @change="changeLanguage($event.target.value)"
