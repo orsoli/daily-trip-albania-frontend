@@ -90,13 +90,18 @@ export default {
 </script>
 
 <template>
-  <header :class="['sticky-top', isScrolled ? 'bg-blured' : 'bg-transparent']">
+  <header
+    :class="[
+      'sticky-top mb-4 p-2',
+      isScrolled ? 'bg-blured' : 'bg-transparent',
+    ]"
+  >
     <nav class="navbar navbar-expand-lg">
       <div
         class="container w-lg-75 mx-auto d-lg-flex justify-content-between gap-lg-5"
       >
         <router-link
-          class="navbar-brand"
+          class="navbar-brand d-block d-lg-none"
           :to="{ name: 'home', params: { lang: $i18n.locale } }"
         >
           <img
@@ -106,20 +111,21 @@ export default {
           />
         </router-link>
         <button
-          class="navbar-toggler"
+          class="navbar-toggler border-0 text-light"
           type="button"
           @click="toggleMenu"
           aria-controls="navbarSupportedContent"
           :aria-expanded="isMenuOpen.toString()"
           aria-label="Toggle navigation"
         >
-          <span class="navbar-toggler-icon"></span>
+          <i v-if="!isMenuOpen" class="bi bi-list fs-1 text-light"></i>
+          <i v-if="isMenuOpen" class="bi bi-x-lg fs-1 text-light"></i>
         </button>
         <!-- Menu -->
         <transition name="fade" mode="out-in">
           <div
             v-show="isMenuOpen"
-            class="collapse navbar-collapse fw-bold rounded-3 d-lg-flex justify-content-between gap-5 pe-5"
+            class="collapse navbar-collapse fw-bold rounded-3 d-lg-flex justify-content-around gap-5 pe-5"
             :class="{ show: isMenuOpen }"
             id="navbarSupportedContent"
           >
@@ -255,5 +261,9 @@ export default {
 
 :deep(.router-link-active) {
   color: $secondary !important;
+}
+
+.navbar-toggler-icon {
+  filter: invert(1);
 }
 </style>

@@ -26,6 +26,10 @@
     },
 
     "app_title":            "Daily Trip Albania - Tours & Adventures in Albania",
+    "app_slogan":           "Come as a tourist, leave as a true Albanian.",
+    "app_description":      "Daily Trip Albania offers tours and adventures in Albania. We are dedicated to providing you with an unforgettable and unique experience during your stay in Albania. Explore the natural beauty, culture, and history of our country with us.",
+    "app_keywords":         "Tours, adventures, Albania, Daily Trip Albania, tourism, travel, nature, culture, history",
 
     "footer":               "© {year} Daily Trip Albania. All rights reserved."
+
 }
