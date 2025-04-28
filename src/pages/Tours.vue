@@ -1,5 +1,6 @@
 <script>
 export default {
+  name: "Tours",
   data() {
     return {};
   },
@@ -11,7 +12,7 @@ export default {
 </script>
 
 <template>
-  <div class="container">
+  <div class="container text-light">
     <h1>Tours</h1>
   </div>
 </template>

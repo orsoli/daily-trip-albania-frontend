@@ -1,5 +1,6 @@
 <script>
 export default {
+  name: "About",
   data() {
     return {};
   },
@@ -11,7 +12,7 @@ export default {
 </script>
 
 <template>
-  <div class="container">
+  <div class="container text-light">
     <h1>About</h1>
     <p>
       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod

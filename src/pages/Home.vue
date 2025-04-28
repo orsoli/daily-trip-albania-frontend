@@ -1,11 +1,14 @@
 <script>
 import AppLoader from "@/components/AppLoader.vue";
+import axios from "axios";
 
 export default {
   name: "Home",
   data() {
     return {
-      title: "Daily Trip Albania",
+      // Variables
+      categoriesUrl: "http://localhost:8088/api/categories",
+      categories: [],
     };
   },
 
@@ -13,7 +16,26 @@ export default {
     AppLoader,
   },
 
-  methods: {},
+  methods: {
+    // Fetch categories from the API
+    getCategories() {
+      axios
+        .get(this.categoriesUrl)
+        .then((response) => {
+          this.categories = response.data.categories;
+          console.log(this.categories);
+        })
+        .catch((error) => {
+          console.error("Error fetching categories:", error);
+        })
+        .finally(() => {
+          console.log("Categories fetched successfully");
+        });
+    },
+  },
+  mounted() {
+    this.getCategories();
+  },
 };
 </script>
 
@@ -39,49 +61,25 @@ export default {
           />
         </figure>
       </div>
+
       <!-- Page actions -->
       <div class="col-lg-7 d-flex flex-column gap-5">
         <!-- Filter -->
-        <div
-          class="filter d-flex justify-content-center gap-1 overflow-x-scroll"
-        >
-          <button class="btn btn-transparent">
-            <div class="my-card text-bg-dark h-75">
-              <img
-                src="../assets/img/3_islands_ksamil_Albania.webp"
-                class="my-card-img"
-                alt="3_islands_ksamil_Albania"
-              />
-              <div class="my-card-img-overlay">
-                <h2 class="card-title">North</h2>
-              </div>
-            </div>
+        <!-- <div class="filter d-flex gap-1 overflow-x-scroll">
+          <button
+            class="btn btn-transparent"
+            v-for="category in categories"
+            :key="category.id"
+          >
+            <h3>
+              <span
+                class="badge text-light text-bg-dark bg-opacity-75 shadow"
+                >{{ category.name }}</span
+              >
+            </h3>
           </button>
-          <button class="btn btn-transparent">
-            <div class="my-card text-bg-dark h-75">
-              <img
-                src="../assets/img/3_islands_ksamil_Albania.webp"
-                class="my-card-img"
-                alt="3_islands_ksamil_Albania"
-              />
-              <div class="my-card-img-overlay">
-                <h2 class="card-title">Central</h2>
-              </div>
-            </div>
-          </button>
-          <button class="btn btn-transparent">
-            <div class="my-card text-bg-dark h-75">
-              <img
-                src="../assets/img/3_islands_ksamil_Albania.webp"
-                class="my-card-img"
-                alt="3_islands_ksamil_Albania"
-              />
-              <div class="my-card-img-overlay">
-                <h2 class="card-title">South</h2>
-              </div>
-            </div>
-          </button>
-        </div>
+        </div> -->
+
         <!-- Filter resulsts -->
         <div class="filter-results d-flex gap-1 overflow-x-scroll">
           <button class="btn btn-transparent">
@@ -169,7 +167,7 @@ figure #logo {
 
 .my-card {
   width: 10rem;
-  height: 18rem;
+  height: 16rem;
   position: relative;
   overflow: hidden;
   border-radius: 1.5rem;
@@ -200,7 +198,7 @@ figure #logo {
 
   @media (max-width: 768px) {
     width: 6rem;
-    height: 12rem;
+    height: 10rem;
     .my-card-img-overlay h2 {
       font-size: 1.5rem;
     }

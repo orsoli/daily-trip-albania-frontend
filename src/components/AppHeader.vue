@@ -79,10 +79,10 @@ export default {
 
     toggleSearch() {
       this.search = !this.search;
-      if (this.search) {
-        this.$nextTick(() => {
-          this.$refs.searchInput.focus();
-        });
+    },
+    focusSearchInput() {
+      if (this.search && this.$refs.searchInput) {
+        this.$refs.searchInput.focus();
       }
     },
   },
@@ -118,11 +118,13 @@ export default {
           :aria-expanded="isMenuOpen.toString()"
           aria-label="Toggle navigation"
         >
-          <i v-if="!isMenuOpen" class="bi bi-list fs-1 text-light"></i>
-          <i v-if="isMenuOpen" class="bi bi-x-lg fs-1 text-light"></i>
+          <transition name="page-opacity" mode="out-in">
+            <i v-if="!isMenuOpen" class="bi bi-list fs-1 text-light"></i>
+            <i v-else-if="isMenuOpen" class="bi bi-x-lg fs-1 text-light"></i>
+          </transition>
         </button>
         <!-- Menu -->
-        <transition name="fade" mode="out-in">
+        <transition name="fade">
           <div
             v-show="isMenuOpen"
             class="collapse navbar-collapse fw-bold rounded-3 d-lg-flex justify-content-around gap-5 pe-5"
@@ -163,48 +165,54 @@ export default {
               class="language w-auto position-absolute end-0 my-bg-primary rounded-start-4 shadow"
             >
               <!-- Search input -->
-              <div v-if="search">
-                <input
-                  ref="searchInput"
-                  type="text"
-                  class="form-control border-0 rounded-4 bg-transparent text-light text-shadow me-5"
-                  :placeholder="$t('search_placeholder')"
-                  aria-label="Search"
-                  id="search"
-                  @keyup.enter="toggleSearch"
-                  @blur="toggleSearch"
-                />
-              </div>
-              <!-- Search button -->
-              <div v-if="!search" class="d-flex">
-                <button
-                  class="btn text-light border-end rounded-0"
-                  type="button"
-                  @click="toggleSearch"
-                >
-                  <i class="bi bi-search"></i>
-                </button>
-                <!-- Language selector -->
-                <select
-                  v-model="$i18n.locale"
-                  class="form-select no-arrow bg-transparent border-0 text-light text-center text-shadow w-auto pe-0"
-                  name="lang"
-                  id="lang"
-                  @change="changeLanguage($event.target.value)"
-                >
-                  <option
-                    v-for="lang in availableLanguages"
-                    :key="lang.code"
-                    :value="lang.code"
+              <transition
+                name="page-opacity"
+                mode="out-in"
+                @after-enter="focusSearchInput"
+              >
+                <div v-if="search">
+                  <input
+                    ref="searchInput"
+                    type="text"
+                    class="form-control border-0 rounded-4 bg-transparent text-light text-shadow me-5"
+                    :placeholder="$t('search_placeholder')"
+                    aria-label="Search"
+                    id="search"
+                    @keyup.enter="toggleSearch"
+                    @blur="toggleSearch"
+                  />
+                </div>
+                <!-- Search button -->
+                <div v-else-if="!search" class="d-flex">
+                  <button
+                    class="btn text-light border-end rounded-0"
+                    type="button"
+                    @click="toggleSearch"
                   >
-                    {{ lang.flag }}
-                    {{ lang.label }}
-                  </option>
-                </select>
-                <label class="form-label text-light pe-1" for="lang">
-                  <i class="bi bi-translate"></i>
-                </label>
-              </div>
+                    <i class="bi bi-search"></i>
+                  </button>
+                  <!-- Language selector -->
+                  <select
+                    v-model="$i18n.locale"
+                    class="form-select no-arrow bg-transparent border-0 text-light text-center text-shadow w-auto pe-0"
+                    name="lang"
+                    id="lang"
+                    @change="changeLanguage($event.target.value)"
+                  >
+                    <option
+                      v-for="lang in availableLanguages"
+                      :key="lang.code"
+                      :value="lang.code"
+                    >
+                      {{ lang.flag }}
+                      {{ lang.label }}
+                    </option>
+                  </select>
+                  <label class="form-label text-light pe-1" for="lang">
+                    <i class="bi bi-translate"></i>
+                  </label>
+                </div>
+              </transition>
             </div>
           </div>
         </transition>
