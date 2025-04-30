@@ -36,7 +36,7 @@ export default {
 <style lang="scss" scoped>
 /* From Uiverse.io by Smit-Prajapati */
 .loader {
-  --size: 250px;
+  --size: 550px;
   --duration: 2s;
   --logo-color: grey;
   --background: linear-gradient(

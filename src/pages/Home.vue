@@ -7,8 +7,17 @@ export default {
   data() {
     return {
       // Variables
+      isLoading: true,
       categoriesUrl: "http://localhost:8088/api/categories",
       categories: [],
+
+      images: [
+        "path/to/image1.jpg",
+        "path/to/image2.jpg",
+        "path/to/image3.jpg",
+        "path/to/image4.jpg",
+      ],
+      itemPositions: [],
     };
   },
 
@@ -23,35 +32,85 @@ export default {
         .get(this.categoriesUrl)
         .then((response) => {
           this.categories = response.data.categories;
-          console.log(this.categories);
         })
         .catch((error) => {
           console.error("Error fetching categories:", error);
         })
         .finally(() => {
-          console.log("Categories fetched successfully");
+          this.isLoading = false;
         });
     },
+
+    updatePositions() {
+      const carousel = this.$refs.carousel;
+      if (!carousel) return;
+      const carouselRect = carousel.getBoundingClientRect();
+      const centerX = carouselRect.left + carouselRect.width / 2;
+
+      this.itemPositions = Array.from(carousel.querySelectorAll(".item")).map(
+        (item) => {
+          const itemRect = item.getBoundingClientRect();
+          const itemCenter = itemRect.left + itemRect.width / 2;
+          const distance = Math.abs(centerX - itemCenter);
+          return distance;
+        }
+      );
+    },
+
+    handleScroll() {
+      this.updatePositions();
+    },
+
+    getStyle(index) {
+      const distance = this.itemPositions[index] || 0;
+      const scale = Math.max(1, 1.5 - distance / 400);
+      const zIndex = Math.round(1000 - distance);
+      const brightness = Math.max(0.5, 1 - distance / 400);
+
+      return {
+        transform: `scale(${scale})`,
+        zIndex: zIndex,
+        filter: `brightness(${brightness})`,
+      };
+    },
   },
+
   mounted() {
+    this.updatePositions();
+    window.addEventListener("resize", this.updatePositions);
+
     this.getCategories();
+  },
+
+  beforeUnmount() {
+    window.removeEventListener("resize", this.updatePositions);
   },
 };
 </script>
 
 <template>
   <!-- Loader section -->
-  <!-- <section>
+  <section v-if="isLoading">
     <AppLoader />
-  </section> -->
-  <div class="container text-light">
-    <div class="d-lg-flex gap-5 align-items-end">
+  </section>
+  <div class="container text-light" v-else>
+    <div class="d-lg-flex align-items-center gap-5">
       <!-- Page content -->
-      <div class="col-lg-5">
+      <div class="col-lg-5 mb-5 mb-lg-0">
         <div class="slogan">
-          <h1>
+          <h1>{{ $t("destinations_country.al") }}</h1>
+          <h2>
             {{ $t("header_title") }}
-          </h1>
+          </h2>
+          <p>
+            {{ $t("app_slogan") }}
+          </p>
+          <a
+            href="#"
+            class="btn text-light border rounded-4 bg-dark bg-opacity-50 shadow"
+          >
+            {{ $t("explore_albania") }}
+          </a>
         </div>
         <figure class="d-none d-lg-block p-0">
           <img
@@ -63,85 +122,40 @@ export default {
       </div>
 
       <!-- Page actions -->
-      <div class="col-lg-7 d-flex flex-column gap-5">
-        <!-- Filter -->
-        <!-- <div class="filter d-flex gap-1 overflow-x-scroll">
-          <button
-            class="btn btn-transparent"
-            v-for="category in categories"
-            :key="category.id"
-          >
-            <h3>
-              <span
-                class="badge text-light text-bg-dark bg-opacity-75 shadow"
-                >{{ category.name }}</span
-              >
-            </h3>
-          </button>
-        </div> -->
+      <div class="col-lg-7 d-flex flex-column gap-1">
+        <!-- Popular destinations -->
+        <div class="border-bottom border-2 w-50 align-self-end">
+          <h4>{{ $t("popular_destinations") }}</h4>
+        </div>
+        <div class="carousel" ref="carousel" @scroll="handleScroll">
+          <!-- Spacer before -->
+          <div class="spacer"></div>
 
-        <!-- Filter resulsts -->
-        <div class="filter-results d-flex gap-1 overflow-x-scroll">
-          <button class="btn btn-transparent">
-            <div class="my-card text-bg-dark">
+          <!-- Fotot -->
+          <div
+            v-for="(image, index) in images"
+            :key="index"
+            class="item"
+            :style="getStyle(index)"
+          >
+            <a
+              href="#"
+              class="position-relative text-decoration-none text-light"
+            >
               <img
                 src="../assets/img/3_islands_ksamil_Albania.webp"
-                class="my-card-img"
-                alt="3_islands_ksamil_Albania"
+                alt="Destination"
               />
-              <div class="my-card-img-overlay">
-                <h2 class="card-title">Ksamil</h2>
+              <div
+                class="position-absolute translate-middle-x start-50 bottom-0 fs-5 fw-bold"
+              >
+                <h5>Destination</h5>
               </div>
-            </div>
-          </button>
-          <button class="btn btn-transparent">
-            <div class="my-card text-bg-dark">
-              <img
-                src="../assets/img/3_islands_ksamil_Albania.webp"
-                class="my-card-img"
-                alt="3_islands_ksamil_Albania"
-              />
-              <div class="my-card-img-overlay">
-                <h2 class="card-title">Ksamil</h2>
-              </div>
-            </div>
-          </button>
-          <button class="btn btn-transparent">
-            <div class="my-card text-bg-dark">
-              <img
-                src="../assets/img/3_islands_ksamil_Albania.webp"
-                class="my-card-img"
-                alt="3_islands_ksamil_Albania"
-              />
-              <div class="my-card-img-overlay">
-                <h2 class="card-title">Ksamil</h2>
-              </div>
-            </div>
-          </button>
-          <button class="btn btn-transparent">
-            <div class="my-card text-bg-dark">
-              <img
-                src="../assets/img/3_islands_ksamil_Albania.webp"
-                class="my-card-img"
-                alt="3_islands_ksamil_Albania"
-              />
-              <div class="my-card-img-overlay">
-                <h2 class="card-title">Ksamil</h2>
-              </div>
-            </div>
-          </button>
-          <button class="btn btn-transparent">
-            <div class="my-card text-bg-dark">
-              <img
-                src="../assets/img/3_islands_ksamil_Albania.webp"
-                class="my-card-img"
-                alt="3_islands_ksamil_Albania"
-              />
-              <div class="my-card-img-overlay">
-                <h2 class="card-title">Ksamil</h2>
-              </div>
-            </div>
-          </button>
+            </a>
+          </div>
+
+          <!-- Spacer after -->
+          <div class="spacer"></div>
         </div>
       </div>
     </div>
@@ -149,68 +163,73 @@ export default {
 </template>
 
 <style lang="scss" scoped>
-.slogan h1 {
-  font-size: 3rem;
-  font-weight: 600;
-  color: #ffffff;
-  text-shadow: 0 0 10px #000000;
+.slogan {
+  h1 {
+    font-size: 3rem;
+    font-weight: 600;
+    color: #ffffff;
+    text-shadow: 0 0 10px #000000;
+  }
 
-  @media (max-width: 768px) {
-    font-size: 2rem;
+  a:hover {
+    scale: 1.1;
+    transition: scale 0.3s ease-in-out;
   }
 }
 
 figure #logo {
   width: 60%;
-  filter: drop-shadow(0 0 10px rgb(0, 0, 0));
+  filter: drop-shadow(0 0 5px rgb(0, 0, 0));
 }
 
-.my-card {
-  width: 10rem;
-  height: 16rem;
+.carousel {
+  display: flex;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  gap: 5px;
+  align-items: center;
   position: relative;
-  overflow: hidden;
-  border-radius: 1.5rem;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
-  .my-card-img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    filter: brightness(0.5);
-  }
-  .my-card-img-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    display: flex;
-    align-items: end;
-    justify-content: center;
-    text-align: center;
-    padding-bottom: 5px;
-  }
-  .my-card-img-overlay h2 {
-    font-size: 2rem;
-    color: #ffffff;
-    text-shadow: 0 0 10px #000000;
+  padding: 50px 0;
+
+  a:hover div {
+    color: rgba(24, 55, 58, 0.664);
+    scale: 1.5;
+    text-shadow: 0 0 3px rgb(255, 255, 255);
+    transition: scale 0.3s ease-in-out, color 0.5s ease-in-out;
   }
 
   @media (max-width: 768px) {
-    width: 6rem;
-    height: 10rem;
-    .my-card-img-overlay h2 {
-      font-size: 1.5rem;
-    }
+    padding: 0;
   }
+}
 
-  // :hover {
-  //   scale: 1.05;
-  //   transition: transform 0.3s ease-in-out;
-  // }
-  // :active {
-  //   transform: scale(0.95);
-  //   transition: transform 0.1s ease-in-out;
-  // }
+.item {
+  flex: 0 0 auto;
+  width: 300px;
+  height: 350px;
+  scroll-snap-align: center;
+  transition: transform 0.3s, z-index 0.2s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  @media (max-width: 768px) {
+    width: 200px;
+    height: 250px;
+  }
+}
+
+.item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+  box-shadow: 0 0 10px 5px rgba(whitesmoke, 0.3);
+}
+
+.spacer {
+  flex: 0 0 30%;
 }
 </style>

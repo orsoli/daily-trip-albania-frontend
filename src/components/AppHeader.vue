@@ -93,7 +93,7 @@ export default {
 <template>
   <header
     :class="[
-      'sticky-top p-3 pe-0',
+      'sticky-top p-3 pe-0 mb-md-5',
       isScrolled ? 'bg-blured' : 'bg-transparent',
     ]"
   >

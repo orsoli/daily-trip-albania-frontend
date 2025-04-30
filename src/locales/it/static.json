@@ -1,4 +1,13 @@
 {
+    "destinations_country":    {
+        "al": "L'ALBANIA"
+    },
+
+    "popular_destinations": "Destinazione popolare",
+
+
+    "explore_albania": "Scopri l'Albania",
+
     "home": "Home",
     "tours": "Tour",
     "destinations": "Destinazioni",

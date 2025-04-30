@@ -1,4 +1,12 @@
 {
+    "destinations_country":    {
+        "al": "SHQIPERIA"
+    },
+
+    "popular_destinations": "Destinacionet me te Populluara",
+
+    "explore_albania": "Zbuloni Shqiperine",
+
     "home": "Kreu",
     "tours": "Turet",
     "destinations": "Destinacione",

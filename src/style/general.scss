@@ -18,7 +18,7 @@
 .main-wrapper {
   width:                    100vw;
   height:                   100vh;
-  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.1)), $my-bg-img;
+  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.3)), $my-bg-img;
   
   background-size:          cover;
   background-position:      center;
@@ -29,7 +29,7 @@
   
   @media (max-width: 768px) {
 
-     background:            linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0)), $mobile-bg-img;
+     background:            linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.2)), $mobile-bg-img;
 
   }
 }

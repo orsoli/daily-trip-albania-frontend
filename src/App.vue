@@ -55,7 +55,6 @@ export default {
 </script>
 
 <template>
-  <!-- <div class="p-3"> -->
   <div ref="scrollContainer" class="main-wrapper">
     <AppHeader :isScrolled="isScrolled" />
     <main>
@@ -63,7 +62,6 @@ export default {
     </main>
     <AppFooter />
   </div>
-  <!-- </div> -->
 </template>
 
 <style lang="scss"></style>
