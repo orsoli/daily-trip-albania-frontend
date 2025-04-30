@@ -16,52 +16,56 @@ const routes = [
   },
   {
     path: "/:lang",
-    name: "home",
-    component: Home,
-    meta: {
-      titleKey: "home",
-    },
-  },
-  {
-    path: `/:lang/tours`,
-    name: "tours",
-    component: Tours,
-    meta: {
-      titleKey: "tours",
-    },
-  },
-  {
-    path: "/:lang/destinations",
-    name: "destinations",
-    component: Destinations,
-    meta: {
-      titleKey: "destinations",
-    },
-  },
-  {
-    path: "/:lang/accommodations",
-    name: "accommodations",
-    component: Accommodations,
-    meta: {
-      titleKey: "accommodations",
-    },
-  },
-  {
-    path: "/:lang/about-us",
-    name: "aboutUs",
-    component: About,
-    meta: {
-      titleKey: "about_us",
-    },
-  },
-  {
-    path: "/:lang/contacts",
-    name: "contacts",
-    component: Contact,
-    meta: {
-      titleKey: "contacts",
-      transition: "slide-left",
-    },
+    children: [
+      {
+        path: "",
+        name: "home",
+        component: Home,
+        meta: {
+          titleKey: "home",
+        },
+      },
+      {
+        path: `tours`,
+        name: "tours",
+        component: Tours,
+        meta: {
+          titleKey: "tours",
+        },
+      },
+      {
+        path: "destinations",
+        name: "destinations",
+        component: Destinations,
+        meta: {
+          titleKey: "destinations",
+        },
+      },
+      {
+        path: "accommodations",
+        name: "accommodations",
+        component: Accommodations,
+        meta: {
+          titleKey: "accommodations",
+        },
+      },
+      {
+        path: "about-us",
+        name: "about-us",
+        component: About,
+        meta: {
+          titleKey: "about_us",
+        },
+      },
+      {
+        path: "contacts",
+        name: "contacts",
+        component: Contact,
+        meta: {
+          titleKey: "contacts",
+        },
+      },
+    ],
   },
 ];
 

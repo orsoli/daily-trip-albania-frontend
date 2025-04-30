@@ -1,5 +1,6 @@
 <script>
 import { availableLanguages } from "../i18n/index.js";
+import { routeNameMap } from "../utils/routeNameMap.js";
 
 export default {
   name: "AppHeader",
@@ -21,7 +22,7 @@ export default {
         { text: "tours", url: "tours" },
         { text: "destinations", url: "destinations" },
         { text: "accommodations", url: "accommodations" },
-        { text: "about_us", url: "aboutUs" },
+        { text: "about_us", url: "about-us" },
         { text: "contacts", url: "contacts" },
       ],
       socialList: [
@@ -92,7 +93,7 @@ export default {
 <template>
   <header
     :class="[
-      'sticky-top mb-4 p-2',
+      'sticky-top p-3 pe-0',
       isScrolled ? 'bg-blured' : 'bg-transparent',
     ]"
   >
@@ -100,6 +101,7 @@ export default {
       <div
         class="container w-lg-75 mx-auto d-lg-flex justify-content-between gap-lg-5"
       >
+        <!-- Logo -->
         <router-link
           class="navbar-brand d-block d-lg-none"
           :to="{ name: 'home', params: { lang: $i18n.locale } }"
@@ -110,6 +112,8 @@ export default {
             class="logo"
           />
         </router-link>
+
+        <!-- Hamburger menu btn -->
         <button
           class="navbar-toggler border-0 text-light"
           type="button"
@@ -123,6 +127,7 @@ export default {
             <i v-else-if="isMenuOpen" class="bi bi-x-lg fs-1 text-light"></i>
           </transition>
         </button>
+
         <!-- Menu -->
         <transition name="fade">
           <div
@@ -132,7 +137,7 @@ export default {
             id="navbarSupportedContent"
           >
             <!-- Navbars -->
-            <ul class="navbar-nav ps-3 mb-3 mb-lg-0">
+            <ul class="navbar-nav ps-3">
               <li
                 class="nav-item"
                 v-for="(header, i) in translatedHeaders"
@@ -267,7 +272,7 @@ export default {
   scale: 1.1;
 }
 
-:deep(.router-link-active) {
+:deep(.router-link-exact-active) {
   color: $secondary !important;
 }
 
