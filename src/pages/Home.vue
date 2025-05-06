@@ -1,6 +1,7 @@
 <script>
 import AppLoader from "@/components/AppLoader.vue";
-import RatingStars from "@/components/Rating.vue";
+import RatingStars from "@/components/utils/Rating.vue";
+import Carousel from "@/components/utils/Carousel.vue";
 import { store } from "@/store/store";
 
 export default {
@@ -8,7 +9,7 @@ export default {
   data() {
     return {
       // Variables
-      // store,
+      store,
       itemPositions: [],
     };
   },
@@ -16,6 +17,7 @@ export default {
   components: {
     AppLoader,
     RatingStars,
+    Carousel,
   },
 
   methods: {
@@ -64,7 +66,7 @@ export default {
   },
 
   mounted() {
-    this.updatePositions();
+    window.addEventListener("load", this.updatePositions);
     window.addEventListener("resize", this.updatePositions);
 
     // Get Resources
@@ -74,10 +76,10 @@ export default {
 
   computed: {
     bestDestinations() {
-      return store.allDestinations;
+      return store.allDestinations.data;
     },
     bestTours() {
-      return store.allTours;
+      return store.allTours.data;
     },
   },
 };
@@ -85,7 +87,7 @@ export default {
 
 <template>
   <!-- Loader section -->
-  <section v-if="bestDestinations.length === 0">
+  <section v-if="!store.resourcesLoaded">
     <AppLoader />
   </section>
   <div v-else class="container text-light">
@@ -122,12 +124,17 @@ export default {
         <div class="border-bottom border-2 w-50 align-self-end">
           <h4>{{ $t("popular_destinations") }}</h4>
         </div>
-        <div class="carousel" ref="carousel" @scroll="handleScroll">
-          <!-- Spacer before -->
-          <div class="spacer"></div>
+
+        <!-- Carousel -->
+        <Carousel :items="bestDestinations" />
+
+        <!-- ! -->
+        <!-- <div class="carousel" ref="carousel" @scroll="handleScroll"> -->
+        <!-- Spacer before -->
+        <!-- <div class="spacer"></div>
           <a
             href="#"
-            v-for="(destintion, i) in bestDestinations.destinations.data"
+            v-for="(destintion, i) in bestDestinations"
             :key="destintion.id"
             class="item position-relative text-decoration-none text-light"
             :style="getStyle(i)"
@@ -142,11 +149,12 @@ export default {
             >
               {{ destintion.name }}
             </h5>
-          </a>
+          </a> -->
 
-          <!-- Spacer after -->
-          <div class="spacer"></div>
-        </div>
+        <!-- Spacer after -->
+        <!-- <div class="spacer"></div>
+        </div> -->
+        <!-- ! -->
       </div>
     </div>
     <!-- Popular Tours -->
@@ -157,7 +165,7 @@ export default {
       <div
         class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-3 justify-content-center"
       >
-        <div v-for="tour in bestTours.tours.data" :key="tour.id" class="col">
+        <div v-for="tour in bestTours" :key="tour.id" class="col">
           <div class="card bg-dark bg-opacity-75 border-0 rounded-4 text-light">
             <img
               src="../assets/img/3_islands_ksamil_Albania.webp"
@@ -214,62 +222,62 @@ figure #logo {
   filter: drop-shadow(0 0 5px rgb(0, 0, 0));
 }
 
-.carousel {
-  height: 400px;
-  display: flex;
-  overflow-x: auto;
-  overflow-y: hidden;
-  scroll-snap-type: x mandatory;
-  -webkit-overflow-scrolling: touch;
-  gap: 5px;
-  align-items: center;
-  position: relative;
-  padding: 50px 0;
+// .carousel {
+//   height: 400px;
+//   display: flex;
+//   overflow-x: auto;
+//   overflow-y: hidden;
+//   scroll-snap-type: x mandatory;
+//   -webkit-overflow-scrolling: touch;
+//   gap: 5px;
+//   align-items: center;
+//   position: relative;
+//   padding: 50px 0;
 
-  .title {
-    text-shadow: 0 0 3px #000000;
-  }
+//   .title {
+//     text-shadow: 0 0 3px #000000;
+//   }
 
-  a:hover .title {
-    color: rgba(24, 55, 58, 0.664);
-    scale: 1.3;
-    text-shadow: 0 0 3px rgb(255, 255, 255);
-    transition: scale 0.3s ease-in-out, color 0.5s ease-in-out;
-  }
+//   a:hover .title {
+//     color: rgba(24, 55, 58, 0.664);
+//     scale: 1.3;
+//     text-shadow: 0 0 3px rgb(255, 255, 255);
+//     transition: scale 0.3s ease-in-out, color 0.5s ease-in-out;
+//   }
 
-  @media (max-width: 768px) {
-    padding: 0;
-  }
-}
+//   @media (max-width: 768px) {
+//     padding: 0;
+//   }
+// }
 
-.item {
-  flex: 0 0 auto;
-  width: 250px;
-  height: 200px;
-  scroll-snap-align: center;
-  transition: transform 0.3s, z-index 0.2s;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 10px;
-  box-shadow: 0 0 10px 5px rgba(whitesmoke, 0.3);
-  overflow: hidden;
+// .item {
+//   flex: 0 0 auto;
+//   width: 250px;
+//   height: 200px;
+//   scroll-snap-align: center;
+//   transition: transform 0.3s, z-index 0.2s;
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   border-radius: 10px;
+//   box-shadow: 0 0 10px 5px rgba(whitesmoke, 0.3);
+//   overflow: hidden;
 
-  @media (max-width: 768px) {
-    width: 250px;
-    // height: 150px;
-  }
-}
+//   @media (max-width: 768px) {
+//     width: 250px;
+//     // height: 150px;
+//   }
+// }
 
-.item img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
+// .item img {
+//   width: 100%;
+//   height: 100%;
+//   object-fit: cover;
+// }
 
-.spacer {
-  flex: 0 0 30%;
-}
+// .spacer {
+//   flex: 0 0 30%;
+// }
 
 .card {
   box-shadow: 0 0 10px 5px rgba(whitesmoke, 0.3);
