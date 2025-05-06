@@ -1,46 +1,24 @@
 <script>
 import AppLoader from "@/components/AppLoader.vue";
-import axios from "axios";
+import RatingStars from "@/components/Rating.vue";
+import { store } from "@/store/store";
 
 export default {
   name: "Home",
   data() {
     return {
       // Variables
-      isLoading: true,
-      categoriesUrl: "http://localhost:8088/api/categories",
-      categories: [],
-
-      images: [
-        "path/to/image1.jpg",
-        "path/to/image2.jpg",
-        "path/to/image3.jpg",
-        "path/to/image4.jpg",
-      ],
+      // store,
       itemPositions: [],
     };
   },
 
   components: {
     AppLoader,
+    RatingStars,
   },
 
   methods: {
-    // Fetch categories from the API
-    getCategories() {
-      axios
-        .get(this.categoriesUrl)
-        .then((response) => {
-          this.categories = response.data.categories;
-        })
-        .catch((error) => {
-          console.error("Error fetching categories:", error);
-        })
-        .finally(() => {
-          this.isLoading = false;
-        });
-    },
-
     updatePositions() {
       const carousel = this.$refs.carousel;
       if (!carousel) return;
@@ -73,27 +51,44 @@ export default {
         filter: `brightness(${brightness})`,
       };
     },
+
+    handleImageError(event) {
+      // event.target.src = "https://placehold.co/300x200?text=No+Image";
+      event.target.src =
+        "https://res.cloudinary.com/dmofmp5zg/image/upload/v1740773578/cld-sample-2.jpg";
+    },
+  },
+
+  beforeUnmount() {
+    window.removeEventListener("resize", this.updatePositions);
   },
 
   mounted() {
     this.updatePositions();
     window.addEventListener("resize", this.updatePositions);
 
-    this.getCategories();
+    // Get Resources
+    store.fetchResources(store.destinations.apiUrl, 1, {}, "allDestinations");
+    store.fetchResources(store.tours.apiUrl, 1, {}, "allTours");
   },
 
-  beforeUnmount() {
-    window.removeEventListener("resize", this.updatePositions);
+  computed: {
+    bestDestinations() {
+      return store.allDestinations;
+    },
+    bestTours() {
+      return store.allTours;
+    },
   },
 };
 </script>
 
 <template>
   <!-- Loader section -->
-  <section v-if="isLoading">
+  <section v-if="bestDestinations.length === 0">
     <AppLoader />
   </section>
-  <div class="container text-light" v-else>
+  <div v-else class="container text-light">
     <div class="d-lg-flex align-items-center gap-5">
       <!-- Page content -->
       <div class="col-lg-5 mb-5 mb-lg-0">
@@ -130,35 +125,72 @@ export default {
         <div class="carousel" ref="carousel" @scroll="handleScroll">
           <!-- Spacer before -->
           <div class="spacer"></div>
-
-          <!-- Fotot -->
-          <div
-            v-for="(image, index) in images"
-            :key="index"
-            class="item"
-            :style="getStyle(index)"
+          <a
+            href="#"
+            v-for="(destintion, i) in bestDestinations.destinations.data"
+            :key="destintion.id"
+            class="item position-relative text-decoration-none text-light"
+            :style="getStyle(i)"
           >
-            <a
-              href="#"
-              class="position-relative text-decoration-none text-light"
+            <img
+              src="../assets/img/3_islands_ksamil_Albania.webp"
+              :alt="destintion.slug"
+              @error="handleImageError"
+            />
+            <h5
+              class="title position-absolute translate-middle-x start-50 bottom-0 fw-bold no-wrap text-center"
             >
-              <img
-                src="../assets/img/3_islands_ksamil_Albania.webp"
-                alt="Destination"
-              />
-              <div
-                class="position-absolute translate-middle-x start-50 bottom-0 fs-5 fw-bold"
-              >
-                <h5>Destination</h5>
-              </div>
-            </a>
-          </div>
+              {{ destintion.name }}
+            </h5>
+          </a>
 
           <!-- Spacer after -->
           <div class="spacer"></div>
         </div>
       </div>
     </div>
+    <!-- Popular Tours -->
+    <div>
+      <div class="border-bottom border-2 w-50 mb-5">
+        <h4>{{ $t("popular_tours") }}</h4>
+      </div>
+      <div
+        class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-3 justify-content-center"
+      >
+        <div v-for="tour in bestTours.tours.data" :key="tour.id" class="col">
+          <div class="card bg-dark bg-opacity-75 border-0 rounded-4 text-light">
+            <img
+              src="../assets/img/3_islands_ksamil_Albania.webp"
+              @error="handleImageError"
+              :alt="tour.slug"
+              class="card-img-top"
+            />
+            <div class="card-body d-flex flex-column">
+              <h5 class="card-title text-info">{{ tour.title }}</h5>
+              <h5>
+                {{ tour.price }}
+                {{ tour.currency.code }}
+              </h5>
+              <RatingStars
+                :rating="parseFloat(tour.rating)"
+                :view-count="parseInt(tour.view_count)"
+              />
+              <p class="card-text truncate-multiline">
+                {{ tour.description }}
+              </p>
+              <a
+                href="#"
+                class="btn btn-transparent text-info border rounded-4 w-50"
+              >
+                {{ $t("book_now") }}
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Best Accommodations -->
+    <div></div>
   </div>
 </template>
 
@@ -183,6 +215,7 @@ figure #logo {
 }
 
 .carousel {
+  height: 400px;
   display: flex;
   overflow-x: auto;
   overflow-y: hidden;
@@ -193,9 +226,13 @@ figure #logo {
   position: relative;
   padding: 50px 0;
 
-  a:hover div {
+  .title {
+    text-shadow: 0 0 3px #000000;
+  }
+
+  a:hover .title {
     color: rgba(24, 55, 58, 0.664);
-    scale: 1.5;
+    scale: 1.3;
     text-shadow: 0 0 3px rgb(255, 255, 255);
     transition: scale 0.3s ease-in-out, color 0.5s ease-in-out;
   }
@@ -207,17 +244,20 @@ figure #logo {
 
 .item {
   flex: 0 0 auto;
-  width: 300px;
-  height: 350px;
+  width: 250px;
+  height: 200px;
   scroll-snap-align: center;
   transition: transform 0.3s, z-index 0.2s;
   display: flex;
   justify-content: center;
   align-items: center;
+  border-radius: 10px;
+  box-shadow: 0 0 10px 5px rgba(whitesmoke, 0.3);
+  overflow: hidden;
 
   @media (max-width: 768px) {
-    width: 200px;
-    height: 250px;
+    width: 250px;
+    // height: 150px;
   }
 }
 
@@ -225,11 +265,26 @@ figure #logo {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  border-radius: 10px;
-  box-shadow: 0 0 10px 5px rgba(whitesmoke, 0.3);
 }
 
 .spacer {
   flex: 0 0 30%;
+}
+
+.card {
+  box-shadow: 0 0 10px 5px rgba(whitesmoke, 0.3);
+  transition: all 0.3s ease-in-out;
+  a:hover {
+    scale: 1.1;
+    transition: scale 0.3s ease-in-out;
+  }
+
+  .truncate-multiline {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
 }
 </style>
