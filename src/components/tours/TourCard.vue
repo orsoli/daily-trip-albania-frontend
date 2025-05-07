@@ -1,10 +1,14 @@
 <script>
 import RatingStars from "@/components/utils/Rating.vue";
+import TourCardLoader from "./TourCardLoader.vue";
 
 export default {
   name: "TourCard",
   data() {
-    return {};
+    return {
+      // Variables
+      loading: true,
+    };
   },
 
   props: {
@@ -16,13 +20,14 @@ export default {
 
   components: {
     RatingStars,
+    TourCardLoader,
   },
 
   methods: {
     handleImageError(event) {
-      // event.target.src = "https://placehold.co/300x200?text=No+Image";
-      event.target.src =
-        "https://res.cloudinary.com/dmofmp5zg/image/upload/v1740773578/cld-sample-2.jpg";
+      event.target.src = "https://placehold.co/300x200?text=No+Image";
+      //   event.target.src =
+      //     "https://res.cloudinary.com/dmofmp5zg/image/upload/v1740773578/cld-sample-2.jpg";
     },
   },
 };
@@ -30,11 +35,15 @@ export default {
 
 <template>
   <div class="col">
+    <!-- Card Loader -->
+    <TourCardLoader v-if="loading" />
+    <!-- Card -->
     <div class="card bg-dark bg-opacity-75 border-0 rounded-4 text-light">
       <img
-        src="../assets/img/3_islands_ksamil_Albania.webp"
-        @error="handleImageError"
+        :src="tour.thumbnail"
         :alt="tour.slug"
+        @error="handleImageError"
+        @load="loading = false"
         class="card-img-top"
       />
       <div class="card-body d-flex flex-column">

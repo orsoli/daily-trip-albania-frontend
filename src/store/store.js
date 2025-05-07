@@ -14,7 +14,7 @@ export const store = reactive({
   categoriesApiUrl: "http://localhost:8088/api/categories",
 
   // Variables
-  resourcesLoaded: false,
+  loading: true,
   searchQuery: [],
   allDestinations: [],
   allTours: [],
@@ -28,7 +28,7 @@ export const store = reactive({
     targetVariable = "variabels"
   ) {
     try {
-      this.resourcesLoaded = false;
+      this.loading = true;
 
       const response = await axios.get(url, {
         params: {
@@ -45,7 +45,7 @@ export const store = reactive({
     } catch (error) {
       console.error("Error fetching data:", error);
     } finally {
-      this.resourcesLoaded = true;
+      this.loading = false;
     }
   },
 });

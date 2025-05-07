@@ -15,6 +15,7 @@ export default {
   },
 
   methods: {
+    // Update item positions based on the carousel's center
     updatePositions() {
       const carousel = this.$refs.carousel;
       if (!carousel) return;
@@ -30,9 +31,11 @@ export default {
         }
       );
     },
+    // Handle scroll event
     handleScroll() {
       this.updatePositions();
     },
+    // Get style for each item based on its position
     getStyle(index) {
       const distance = this.itemPositions[index] || 0;
       const scale = Math.max(1, 1.5 - distance / 400);
@@ -45,7 +48,17 @@ export default {
         filter: `brightness(${brightness})`,
       };
     },
+
+    // Handle image error
+    // This function is called when an image fails to load
+    // It sets a placeholder image
+    handleImageError(event) {
+      event.target.src = "https://placehold.co/300x200?text=No+Image";
+      //   event.target.src =
+      //     "https://res.cloudinary.com/dmofmp5zg/image/upload/v1740773578/cld-sample-2.jpg";
+    },
   },
+
   mounted() {
     const images = this.$refs.carousel.querySelectorAll("img");
     let loadedCount = 0;
@@ -85,7 +98,8 @@ export default {
       >
         <img
           src="../../assets/img/3_islands_ksamil_Albania.webp"
-          alt="carousel image"
+          :alt="item.slug"
+          @error="handleImageError"
         />
         <h5
           class="title position-absolute translate-middle-x start-50 bottom-0 fw-bold no-wrap text-center"
@@ -169,6 +183,7 @@ export default {
 }
 
 .spacer {
-  flex: 0 0 30%;
+  flex: 0 0 calc(50% - 125px);
+  pointer-events: none;
 }
 </style>
