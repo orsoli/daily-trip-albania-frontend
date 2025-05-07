@@ -43,7 +43,6 @@ export default {
 </script>
 
 <template>
-  <!-- Loader section -->
   <div class="container text-light">
     <div class="d-lg-flex align-items-center gap-5">
       <!-- Page content -->
@@ -84,10 +83,19 @@ export default {
         <div class="border-bottom border-2 w-50 align-self-end">
           <h4>{{ $t("popular_destinations") }}</h4>
         </div>
+
+        <!-- Carousel Loader -->
+        <div
+          v-if="store.loading"
+          class="carousel placeholder-glow d-flex justify-content-center align-items-center"
+        >
+          <div v-for="n in 4" :key="n" class="placeholder col-12"></div>
+        </div>
         <!-- Carousel -->
-        <Carousel :items="bestDestinations" />
+        <Carousel v-else :items="bestDestinations" />
       </div>
     </div>
+
     <!-- Popular Tours -->
     <div>
       <div class="border-bottom border-2 w-50 mb-5">
@@ -110,6 +118,7 @@ export default {
         <TourCard v-for="tour in bestTours" :key="tour.id" :tour="tour" />
       </div>
     </div>
+
     <!-- Best Accommodations -->
     <div></div>
   </div>
@@ -143,20 +152,19 @@ figure {
   }
 }
 
-.card {
-  box-shadow: 0 0 10px 5px rgba(whitesmoke, 0.3);
-  transition: all 0.3s ease-in-out;
-  a:hover {
-    scale: 1.1;
-    transition: scale 0.3s ease-in-out;
+.carousel {
+  height: 400px;
+  .placeholder {
+    width: 250px;
+    height: 200px;
+    border-radius: 20px;
+    margin: 5px;
   }
-
-  .truncate-multiline {
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
+  .placeholder:first-child {
+    width: 400px;
+    height: 300px;
+    border-radius: 20px;
+    position: absolute;
   }
 }
 </style>

@@ -54,8 +54,6 @@ export default {
     // It sets a placeholder image
     handleImageError(event) {
       event.target.src = "https://placehold.co/300x200?text=No+Image";
-      //   event.target.src =
-      //     "https://res.cloudinary.com/dmofmp5zg/image/upload/v1740773578/cld-sample-2.jpg";
     },
   },
 
@@ -97,9 +95,10 @@ export default {
         :style="getStyle(index)"
       >
         <img
-          src="../../assets/img/3_islands_ksamil_Albania.webp"
+          :src="item.thumbnail"
           :alt="item.slug"
           @error="handleImageError"
+          @load="updatePositions"
         />
         <h5
           class="title position-absolute translate-middle-x start-50 bottom-0 fw-bold no-wrap text-center"
