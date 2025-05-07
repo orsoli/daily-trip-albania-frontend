@@ -12,6 +12,7 @@ export default {
       // Variables
       store,
       itemPositions: [],
+      imgLoading: true,
     };
   },
 
@@ -63,9 +64,15 @@ export default {
           </a>
         </div>
         <figure class="d-none d-lg-block p-0">
+          <!-- Logo Loader -->
+          <div v-if="imgLoading" id="logo " class="placeholder-glow">
+            <div class="placeholder col-9"></div>
+          </div>
+          <!-- Logo -->
           <img
             src="../assets/img/DailyTrip-logo.png"
             alt="daily-trip-logo"
+            @load="imgLoading = false"
             id="logo"
           />
         </figure>
@@ -123,9 +130,17 @@ export default {
   }
 }
 
-figure #logo {
-  width: 60%;
-  filter: drop-shadow(0 0 5px rgb(0, 0, 0));
+figure {
+  #logo {
+    width: 60%;
+    filter: drop-shadow(0 0 5px rgb(0, 0, 0));
+  }
+
+  .placeholder {
+    height: 300px;
+    border-radius: 20px;
+    margin: 20px;
+  }
 }
 
 .card {

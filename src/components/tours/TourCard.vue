@@ -7,7 +7,7 @@ export default {
   data() {
     return {
       // Variables
-      loading: true,
+      imgLoading: true,
     };
   },
 
@@ -26,8 +26,6 @@ export default {
   methods: {
     handleImageError(event) {
       event.target.src = "https://placehold.co/300x200?text=No+Image";
-      //   event.target.src =
-      //     "https://res.cloudinary.com/dmofmp5zg/image/upload/v1740773578/cld-sample-2.jpg";
     },
   },
 };
@@ -36,14 +34,14 @@ export default {
 <template>
   <div class="col">
     <!-- Card Loader -->
-    <TourCardLoader v-if="loading" />
+    <TourCardLoader v-if="imgLoading" />
     <!-- Card -->
     <div class="card bg-dark bg-opacity-75 border-0 rounded-4 text-light">
       <img
         :src="tour.thumbnail"
         :alt="tour.slug"
         @error="handleImageError"
-        @load="loading = false"
+        @load="imgLoading = false"
         class="card-img-top"
       />
       <div class="card-body d-flex flex-column">
