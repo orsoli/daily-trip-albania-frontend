@@ -1,14 +1,11 @@
 <script>
-import AllTours from "@/components/tours/AllTours.vue";
 export default {
-  name: "Tours",
+  name: "Gallery",
   data() {
     return {};
   },
 
-  components: {
-    AllTours,
-  },
+  components: {},
 
   methods: {},
 };
@@ -17,8 +14,7 @@ export default {
 <template>
   <div class="container text-light">
     <!-- Title page -->
-    <h1>Tours</h1>
-    <AllTours />
+    <h1>Gallery</h1>
   </div>
 </template>
 

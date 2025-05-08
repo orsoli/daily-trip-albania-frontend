@@ -21,13 +21,8 @@ export default {
   methods: {
     // Emit an event to fetch the tours page
     sendPageNr(pageNr) {
-      this.$emit("pageNrSent", pageNr);
+      this.$emit("pageChanged", pageNr);
     },
-  },
-
-  mounted() {
-    console.log("linksLabelNr", this.linksLabelNr);
-    console.log("linksLabelIcon", this.linksLabelIcon);
   },
 };
 </script>

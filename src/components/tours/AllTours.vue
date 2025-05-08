@@ -2,8 +2,9 @@
 import AppLoader from "@/components/AppLoader.vue";
 import TourCard from "@/components/tours/TourCard.vue";
 import TourCardLoader from "./TourCardLoader.vue";
-import Paginte from "@/components/utils/Paginate.vue";
+import Paginate from "@/components/utils/Paginate.vue";
 import { store } from "@/store/store";
+import EventBus from "@/utils/event-bus";
 
 export default {
   name: "AllTours",
@@ -18,19 +19,21 @@ export default {
     AppLoader,
     TourCard,
     TourCardLoader,
-    Paginte,
+    Paginate,
   },
 
   methods: {
     // Get tours page
     getToursPage(page) {
+      // Emit an event to fetch the tours page
+      EventBus.emit("scrollToTop");
+
       store.fetchResources(store.tours.apiUrl, page, {}, "allTours");
     },
   },
 
   mounted() {
     store.fetchResources(store.tours.apiUrl, store.tours.page, {}, "allTours");
-    console.log("All Tours", store.allTours);
   },
 
   computed: {
@@ -50,21 +53,21 @@ export default {
 </script>
 
 <template>
-  <!-- Tours Loader -->
   <div
     v-if="store.loading"
     class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-3"
   >
+    <!-- Tour Loader -->
     <div v-for="n in 8" :key="n" class="col">
       <TourCardLoader />
     </div>
   </div>
-  <!-- Tours -->
   <div v-else class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-3">
+    <!-- Tours -->
     <TourCard v-for="tour in allTours" :key="tour.id" :tour="tour" />
 
     <!-- Pagination -->
-    <Paginte v-if="lastPage > 1" :links="links" @pageNrSent="getToursPage" />
+    <Paginate v-if="lastPage > 1" :links="links" @page-changed="getToursPage" />
   </div>
 </template>
 

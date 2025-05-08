@@ -77,13 +77,11 @@ export default {
         </figure>
       </div>
 
-      <!-- Page actions -->
+      <!-- Popular destinations -->
       <div class="col-lg-7 d-flex flex-column gap-1">
-        <!-- Popular destinations -->
         <div class="border-bottom border-2 w-50 align-self-end">
           <h4>{{ $t("popular_destinations") }}</h4>
         </div>
-
         <!-- Carousel Loader -->
         <div
           v-if="store.loading"
@@ -118,7 +116,7 @@ export default {
         <TourCard v-for="tour in bestTours" :key="tour.id" :tour="tour" />
       </div>
     </div>
-
+    <br />
     <!-- Best Accommodations -->
     <div></div>
   </div>

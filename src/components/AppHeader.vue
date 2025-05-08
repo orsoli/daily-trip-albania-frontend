@@ -1,6 +1,5 @@
 <script>
 import { availableLanguages } from "../i18n/index.js";
-import { routeNameMap } from "../utils/routeNameMap.js";
 
 export default {
   name: "AppHeader",
@@ -24,6 +23,7 @@ export default {
         { text: "accommodations", url: "accommodations" },
         { text: "about_us", url: "about-us" },
         { text: "contacts", url: "contacts" },
+        { text: "gallery", url: "gallery" },
       ],
       socialList: [
         {

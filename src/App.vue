@@ -2,7 +2,9 @@
 import { useI18n } from "vue-i18n";
 import { useRouter } from "vue-router";
 import { useHead } from "@vueuse/head";
+import { handleScrollAfterNavigation } from "./utils/handleScrollAfterNavigation";
 import { ref, watch, onMounted, onUnmounted } from "vue";
+import EventBus from "@/utils/event-bus";
 
 import AppHeader from "./components/AppHeader.vue";
 import AppFooter from "./components/AppFooter.vue";
@@ -31,12 +33,20 @@ export default {
       if (scrollContainer.value) {
         scrollContainer.value.addEventListener("scroll", handleScroll);
       }
+      router.afterEach(handleScrollAfterNavigation(scrollContainer));
+      EventBus.on("scrollToTop", () => {
+        if (scrollContainer.value) {
+          scrollContainer.value.scrollTo({ top: 0, behavior: "smooth" });
+        }
+      });
     });
 
     onUnmounted(() => {
       if (scrollContainer.value) {
         scrollContainer.value.removeEventListener("scroll", handleScroll);
       }
+
+      EventBus.off("scrollToTop");
     });
 
     const updateTitle = () => {
