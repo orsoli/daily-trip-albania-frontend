@@ -3,10 +3,13 @@ import { createI18n } from "vue-i18n";
 // Import translates languages
 import enStatic from "../locales/en/static.json";
 import enHome from "../locales/en/home.json";
+import enTour from "../locales/en/tour.json";
 import sqStatic from "../locales/sq/static.json";
 import sqHome from "../locales/sq/home.json";
+import sqTour from "../locales/sq/tour.json";
 import itStatic from "../locales/it/static.json";
 import itHome from "../locales/it/home.json";
+import itTour from "../locales/it/tour.json";
 
 // Importing the i18n library and the translation files for all languages.
 export const availableLanguages = [
@@ -19,14 +22,17 @@ export const availableLanguages = [
 const en = {
   ...enStatic,
   ...enHome,
+  ...enTour,
 };
 const sq = {
   ...sqStatic,
   ...sqHome,
+  ...sqTour,
 };
 const it = {
   ...itStatic,
   ...itHome,
+  ...itTour,
 };
 
 const i18n = createI18n({

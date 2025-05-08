@@ -145,6 +145,10 @@ export default {
   text-shadow: 0 0 3px rgb(255, 255, 255);
   transition: scale 0.3s ease-in-out, color 0.5s ease-in-out;
 }
+.carousel a:hover img {
+  scale: 1.1;
+  transition: scale 0.3s ease-in-out, color 0.5s ease-in-out;
+}
 
 /* Mobile responsive */
 @media (max-width: 768px) {

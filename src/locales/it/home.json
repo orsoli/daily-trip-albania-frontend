@@ -1,3 +1,16 @@
 {
-    "header_title": "Esplora le spiagge, i siti storici e le gemme nascoste con Daily Trip Albania."
+    "header_title": "Esplora le spiagge, i siti storici e le gemme nascoste con Daily Trip Albania.",
+    "dedication_to_safety": "La nostra dedizione alla sicurezza e alla qualità garantisce che tu abbia un'esperienza senza preoccupazioni.",
+    "safety": {
+        "title": "Sicurezza prima di tutto",
+        "description": "Mettiamo al primo posto la tua sicurezza e il tuo benessere durante tutti i nostri tour e avventure. Le nostre guide sono addestrate per gestire qualsiasi situazione, garantendo un'esperienza sicura e piacevole."
+    },
+    "comfortable_cars": {
+        "title": "Auto pulite e confortevoli",
+        "description": "Forniamo veicoli confortevoli e ben tenuti per tutti i nostri tour, garantendo un viaggio fluido e piacevole."
+    },
+    "local_guides": {
+        "title": "Guide locali",
+        "description": "Le nostre guide locali sono appassionate nel condividere la loro conoscenza e amore per l'Albania, offrendoti un'esperienza autentica."
+    }
 }

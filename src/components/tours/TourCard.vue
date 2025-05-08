@@ -36,7 +36,10 @@ export default {
     <!-- Card Loader -->
     <TourCardLoader v-if="imgLoading" />
     <!-- Card -->
-    <div class="card bg-dark bg-opacity-75 border-0 rounded-4 text-light">
+    <div
+      href="#"
+      class="card bg-dark bg-opacity-75 border-0 rounded-4 text-light overflow-hidden"
+    >
       <img
         :src="tour.thumbnail"
         :alt="tour.slug"
@@ -45,11 +48,8 @@ export default {
         class="card-img-top"
       />
       <div class="card-body d-flex flex-column">
-        <h5 class="card-title text-info">{{ tour.title }}</h5>
-        <h5>
-          {{ tour.price }}
-          {{ tour.currency.code }}
-        </h5>
+        <h5 class="card-title fw-bold">{{ tour.title }}</h5>
+
         <RatingStars
           :rating="parseFloat(tour.rating)"
           :view-count="parseInt(tour.view_count)"
@@ -57,19 +57,39 @@ export default {
         <p class="card-text truncate-multiline">
           {{ tour.description }}
         </p>
-        <a href="#" class="btn btn-transparent text-info border rounded-4 w-50">
-          {{ $t("book_now") }}
-        </a>
+        <div class="d-flex justify-content-between align-items-center mt-auto">
+          <!-- Price -->
+          <div class="price">
+            <span>From</span>
+            <h6 class="fw-bold">
+              {{ tour.price }}
+              {{ tour.currency.code }}
+            </h6>
+          </div>
+          <!-- View tour btn -->
+          <a href="#" class="btn btn-transparent border rounded-4 w-50">
+            {{ $t("view_tour") }}
+          </a>
+        </div>
       </div>
     </div>
   </div>
 </template>
 
 <style lang="scss" scoped>
+@use "../../style/variables" as *;
 .card {
   box-shadow: 0 0 10px 5px rgba(whitesmoke, 0.3);
   transition: all 0.3s ease-in-out;
-  a:hover {
+
+  .card-body {
+    .card-title,
+    a {
+      color: $secondary;
+    }
+  }
+
+  .card-body a:hover {
     scale: 1.1;
     transition: scale 0.3s ease-in-out;
   }
@@ -81,5 +101,9 @@ export default {
     -webkit-box-orient: vertical;
     overflow: hidden;
   }
+}
+.card:hover img {
+  scale: 1.1;
+  transition: scale 0.3s ease-in-out;
 }
 </style>

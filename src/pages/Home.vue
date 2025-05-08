@@ -63,8 +63,8 @@ export default {
           </a>
         </div>
         <figure class="d-none d-lg-block p-0">
-          <!-- Logo Loader -->
           <div v-if="imgLoading" id="logo " class="placeholder-glow">
+            <!-- Logo Loader -->
             <div class="placeholder col-9"></div>
           </div>
           <!-- Logo -->
@@ -82,11 +82,11 @@ export default {
         <div class="border-bottom border-2 w-50 align-self-end">
           <h4>{{ $t("popular_destinations") }}</h4>
         </div>
-        <!-- Carousel Loader -->
         <div
           v-if="store.loading"
           class="carousel placeholder-glow d-flex justify-content-center align-items-center"
         >
+          <!-- Carousel Loader -->
           <div v-for="n in 4" :key="n" class="placeholder col-12"></div>
         </div>
         <!-- Carousel -->
@@ -94,35 +94,60 @@ export default {
       </div>
     </div>
 
+    <!-- Feature section -->
+    <div class="feature border-top rounded-4 p-4 mb-5">
+      <h3 class="fw-bold">{{ $t("dedication_to_safety") }}</h3>
+      <div class="row row-cols-1 row-cols-lg-3 g-3">
+        <!-- Safety -->
+        <div class="col">
+          <i class="bi bi-shield-fill-check"></i>
+          <h5>{{ $t("safety.title") }}</h5>
+          <p>{{ $t("safety.description") }}</p>
+        </div>
+        <!-- Comfortable cars -->
+        <div class="col px-lg-5">
+          <i class="bi bi-car-front-fill"></i>
+          <h5>{{ $t("comfortable_cars.title") }}</h5>
+          <p>{{ $t("comfortable_cars.description") }}</p>
+        </div>
+        <!-- Local Expertise -->
+        <div class="col">
+          <i class="bi bi-map-fill"></i>
+          <h5>{{ $t("local_guides.title") }}</h5>
+          <p>{{ $t("local_guides.description") }}</p>
+        </div>
+      </div>
+    </div>
+
     <!-- Popular Tours -->
-    <div>
+    <div class="popular-tours mb-5">
       <div class="border-bottom border-2 w-50 mb-5">
         <h4>{{ $t("popular_tours") }}</h4>
       </div>
-      <!-- Tours Loader -->
       <div
         v-if="store.loading"
-        class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-3 justify-content-center"
+        class="row row-cols-1 row-cols-md-2 row-cols-lg-4 flex-nowrap overflow-x-scroll"
       >
+        <!-- Tours Loader -->
         <div v-for="n in 8" :key="n" class="col">
           <TourCardLoader />
         </div>
       </div>
-      <!-- Best Tours -->
       <div
         v-else
-        class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-3 justify-content-center"
+        class="row row-cols-1 row-cols-md-2 row-cols-lg-4 flex-nowrap overflow-x-scroll pe-5"
       >
+        <!-- Popular Tours -->
         <TourCard v-for="tour in bestTours" :key="tour.id" :tour="tour" />
       </div>
     </div>
-    <br />
+
     <!-- Best Accommodations -->
-    <div></div>
   </div>
 </template>
 
 <style lang="scss" scoped>
+@use "../style/variables" as *;
 .slogan {
   h1 {
     font-size: 3rem;
@@ -163,6 +188,22 @@ figure {
     height: 300px;
     border-radius: 20px;
     position: absolute;
+  }
+}
+
+.feature .col {
+  i {
+    font-size: 5rem;
+    color: $secondary;
+    text-shadow: 0 0 5px #0e0e0e;
+  }
+  h5 {
+    font-weight: 600;
+    color: $secondary;
+    text-shadow: 0 0 15px #000000;
+  }
+  p {
+    text-shadow: 0 1px 15px #000000;
   }
 }
 </style>

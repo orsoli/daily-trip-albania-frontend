@@ -1,3 +1,16 @@
 {
-   "header_title": "Eksploroni me Daily Trip Albania. Plazhe mahnitëse, vende historike dhe thesaret e fshehura."
+   "header_title": "Eksploroni me Daily Trip Albania. Plazhe mahnitëse, vende historike dhe thesaret e fshehura.",
+   "dedication_to_safety": "Dedikimi ynë për sigurinë dhe cilësinë siguron që ju të keni një përvojë pa shqetësime.",
+   "safety": {
+      "title": "Siguria Para së gjithash",
+      "description": "Ne e vendosim sigurinë dhe mirëqenien tuaj në radhë të parë gjatë të gjitha tureve dhe aventurave tona. Udhëheqësit tanë janë të trajnuar për të menaxhuar çdo situatë, duke siguruar një përvojë të sigurt dhe të këndshme."
+   },
+   "comfortable_cars": {
+      "title": "Makinat e Pastra dhe të Rehatshme",
+      "description": "Ne ofrojmë automjete të rehatshme dhe të mirëmbajtura për të gjitha ekskursionet tona, duke siguruar një udhëtim të qetë dhe të këndshëm."
+   },
+   "local_guides": {
+      "title": "Udhëheqësit Lokalë",
+      "description": "Udhëheqësit tanë vendas janë të apasionuar për të ndarë njohuritë dhe dashurinë e tyre për Shqipërinë, duke ju ofruar një përvojë autentike."
+   }
 }
