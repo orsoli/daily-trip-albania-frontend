@@ -104,16 +104,16 @@ export default {
       <!-- Tours Loader -->
       <div
         v-if="store.loading"
-        class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-3 justify-content-center"
+        class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-3 justify-content-center"
       >
-        <div v-for="n in 10" :key="n" class="col">
+        <div v-for="n in 8" :key="n" class="col">
           <TourCardLoader />
         </div>
       </div>
       <!-- Best Tours -->
       <div
         v-else
-        class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-3 justify-content-center"
+        class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-3 justify-content-center"
       >
         <TourCard v-for="tour in bestTours" :key="tour.id" :tour="tour" />
       </div>

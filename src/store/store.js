@@ -38,7 +38,7 @@ export const store = reactive({
       });
 
       if (this[targetVariable] !== undefined) {
-        this[targetVariable] = response.data;
+        this[targetVariable] = response.data.data;
       } else {
         console.warn(`Variable '${targetVariable}' not found in store.`);
       }

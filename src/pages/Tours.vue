@@ -16,6 +16,9 @@ export default {
 
 <template>
   <div class="container text-light">
+    <!-- Title page -->
+    <h1>Tours</h1>
+    <!-- All Tours -->
     <AllTours />
   </div>
 </template>
