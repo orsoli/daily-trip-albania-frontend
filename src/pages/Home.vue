@@ -4,6 +4,7 @@ import Carousel from "@/components/utils/Carousel.vue";
 import TourCard from "@/components/tours/TourCard.vue";
 import TourCardLoader from "@/components/tours/TourCardLoader.vue";
 import Feature from "@/components/utils/Feature.vue";
+import CategoryFilter from "@/components/utils/CategoryFilter.vue";
 
 import { store } from "@/store/store";
 
@@ -24,6 +25,7 @@ export default {
     TourCard,
     TourCardLoader,
     Feature,
+    CategoryFilter,
   },
 
   methods: {},
@@ -32,8 +34,6 @@ export default {
     // Get Resources
     store.fetchResources(store.destinations.apiUrl, 1, {}, "allDestinations");
     store.fetchResources(store.tours.apiUrl, 1, {}, "allTours");
-    store.fetchResources(store.categoriesApiUrl, 1, {}, "categories");
-    console.log(store.categories.data);
   },
 
   computed: {
@@ -129,6 +129,7 @@ export default {
     </div>
 
     <!-- Browsw by Category -->
+    <CategoryFilter />
   </div>
 </template>
 

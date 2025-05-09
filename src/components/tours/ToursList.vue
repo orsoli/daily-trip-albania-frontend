@@ -37,16 +37,16 @@ export default {
   },
 
   computed: {
-    allTours() {
+    tours() {
       return ToursStore.list.data;
     },
 
     links() {
-      return this.allTours.links;
+      return ToursStore.list.links;
     },
 
     lastPage() {
-      return this.allTours.last_page;
+      return ToursStore.list.last_page;
     },
   },
 };
@@ -64,7 +64,7 @@ export default {
   </div>
   <div v-else class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-3">
     <!-- Tours -->
-    <TourCard v-for="tour in allTours" :key="tour.id" :tour="tour" />
+    <TourCard v-for="tour in tours" :key="tour.id" :tour="tour" />
 
     <!-- Pagination -->
     <Paginate v-if="lastPage > 1" :links="links" @page-changed="getToursPage" />

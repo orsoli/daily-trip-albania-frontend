@@ -1,23 +1,22 @@
 import { reactive } from "vue";
 import axios from "axios";
 
-export const DestinationsStore = reactive({
-  apiUrl: "http://localhost:8088/api/destinations",
+export const CategoriesStore = reactive({
+  apiUrl: "http://localhost:8088/api/categories",
   list: [],
   page: 1,
   loading: true,
   searchQuery: [],
-  categories: [],
 
   // Methods
   // Get resources
-  async fetchResources(url, pageNr = 1, extraParams = {}) {
+  async fetchResources(extraParams = {}) {
     try {
       this.loading = true;
 
-      const response = await axios.get(url, {
+      const response = await axios.get(this.apiUrl, {
         params: {
-          page: pageNr,
+          page: this.page,
           ...extraParams,
         },
       });
