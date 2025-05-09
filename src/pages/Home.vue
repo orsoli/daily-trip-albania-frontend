@@ -1,9 +1,11 @@
 <script>
 import RatingStars from "@/components/utils/Rating.vue";
 import Carousel from "@/components/utils/Carousel.vue";
-import { store } from "@/store/store";
 import TourCard from "@/components/tours/TourCard.vue";
 import TourCardLoader from "@/components/tours/TourCardLoader.vue";
+import Feature from "@/components/utils/Feature.vue";
+
+import { store } from "@/store/store";
 
 export default {
   name: "Home",
@@ -21,6 +23,7 @@ export default {
     Carousel,
     TourCard,
     TourCardLoader,
+    Feature,
   },
 
   methods: {},
@@ -29,6 +32,8 @@ export default {
     // Get Resources
     store.fetchResources(store.destinations.apiUrl, 1, {}, "allDestinations");
     store.fetchResources(store.tours.apiUrl, 1, {}, "allTours");
+    store.fetchResources(store.categoriesApiUrl, 1, {}, "categories");
+    console.log(store.categories.data);
   },
 
   computed: {
@@ -37,6 +42,9 @@ export default {
     },
     bestTours() {
       return store.allTours.data;
+    },
+    categories() {
+      return store.categories.data;
     },
   },
 };
@@ -95,29 +103,7 @@ export default {
     </div>
 
     <!-- Feature section -->
-    <div class="feature border-top rounded-4 p-4 mb-5">
-      <h3 class="fw-bold">{{ $t("dedication_to_safety") }}</h3>
-      <div class="row row-cols-1 row-cols-lg-3 g-3">
-        <!-- Safety -->
-        <div class="col">
-          <i class="bi bi-shield-fill-check"></i>
-          <h5>{{ $t("safety.title") }}</h5>
-          <p>{{ $t("safety.description") }}</p>
-        </div>
-        <!-- Comfortable cars -->
-        <div class="col px-lg-5">
-          <i class="bi bi-car-front-fill"></i>
-          <h5>{{ $t("comfortable_cars.title") }}</h5>
-          <p>{{ $t("comfortable_cars.description") }}</p>
-        </div>
-        <!-- Local Expertise -->
-        <div class="col">
-          <i class="bi bi-map-fill"></i>
-          <h5>{{ $t("local_guides.title") }}</h5>
-          <p>{{ $t("local_guides.description") }}</p>
-        </div>
-      </div>
-    </div>
+    <Feature />
 
     <!-- Popular Tours -->
     <div class="popular-tours mb-5">
@@ -142,12 +128,11 @@ export default {
       </div>
     </div>
 
-    <!-- Best Accommodations -->
+    <!-- Browsw by Category -->
   </div>
 </template>
 
 <style lang="scss" scoped>
-@use "../style/variables" as *;
 .slogan {
   h1 {
     font-size: 3rem;
@@ -188,22 +173,6 @@ figure {
     height: 300px;
     border-radius: 20px;
     position: absolute;
-  }
-}
-
-.feature .col {
-  i {
-    font-size: 5rem;
-    color: $secondary;
-    text-shadow: 0 0 5px #0e0e0e;
-  }
-  h5 {
-    font-weight: 600;
-    color: $secondary;
-    text-shadow: 0 0 15px #000000;
-  }
-  p {
-    text-shadow: 0 1px 15px #000000;
   }
 }
 </style>

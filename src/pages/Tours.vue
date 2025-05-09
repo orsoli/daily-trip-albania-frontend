@@ -1,5 +1,5 @@
 <script>
-import AllTours from "@/components/tours/AllTours.vue";
+import ToursList from "@/components/tours/ToursList.vue";
 export default {
   name: "Tours",
   data() {
@@ -7,7 +7,7 @@ export default {
   },
 
   components: {
-    AllTours,
+    ToursList,
   },
 
   methods: {},
@@ -18,7 +18,7 @@ export default {
   <div class="container text-light">
     <!-- Title page -->
     <h1>Tours</h1>
-    <AllTours />
+    <ToursList />
   </div>
 </template>
 

@@ -18,6 +18,7 @@ export const store = reactive({
   searchQuery: [],
   allDestinations: [],
   allTours: [],
+  categories: [],
 
   // Methods
   // Get resources

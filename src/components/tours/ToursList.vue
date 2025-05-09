@@ -3,15 +3,15 @@ import AppLoader from "@/components/AppLoader.vue";
 import TourCard from "@/components/tours/TourCard.vue";
 import TourCardLoader from "./TourCardLoader.vue";
 import Paginate from "@/components/utils/Paginate.vue";
-import { store } from "@/store/store";
 import EventBus from "@/utils/event-bus";
+import { ToursStore } from "@/store/toursStore";
 
 export default {
-  name: "AllTours",
+  name: "ToursList",
   data() {
     return {
       // Variables
-      store,
+      ToursStore,
     };
   },
 
@@ -28,25 +28,25 @@ export default {
       // Emit an event to fetch the tours page
       EventBus.emit("scrollToTop");
 
-      store.fetchResources(store.tours.apiUrl, page, {}, "allTours");
+      ToursStore.fetchResources(ToursStore.apiUrl, page, {});
     },
   },
 
   mounted() {
-    store.fetchResources(store.tours.apiUrl, store.tours.page, {}, "allTours");
+    ToursStore.fetchResources(ToursStore.apiUrl, ToursStore.page, {});
   },
 
   computed: {
     allTours() {
-      return store.allTours.data;
+      return ToursStore.list.data;
     },
 
     links() {
-      return store.allTours.links;
+      return this.allTours.links;
     },
 
     lastPage() {
-      return store.allTours.last_page;
+      return this.allTours.last_page;
     },
   },
 };
@@ -54,7 +54,7 @@ export default {
 
 <template>
   <div
-    v-if="store.loading"
+    v-if="ToursStore.loading"
     class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-3"
   >
     <!-- Tour Loader -->
