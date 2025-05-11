@@ -41,3 +41,8 @@ $mobile-bg-img:             url("../assets/img/mobile-bg.png");
 
 // Typography
 $font-family-sans-serif:   'Playfair Display', serif;
+
+:root {
+    --primary: rgb(92, 147, 184);
+    --secondary: lighten(rgb(92, 147, 184), 40%);
+}

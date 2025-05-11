@@ -41,8 +41,17 @@ export default {
     <div
       v-for="i in 5"
       :key="i"
-      class="category-card col bg-dark bg-opacity-75 rounded-4"
-    ></div>
+      class="category-card col bg-dark bg-opacity-75 rounded-4 p-3"
+    >
+      <h2 class="text-center placeholder-glow">
+        <span class="placeholder col-10"></span>
+      </h2>
+      <p class="placeholder-glow">
+        <span class="placeholder col-12"></span>
+        <span class="placeholder col-8"></span>
+        <span class="placeholder col-10"></span>
+      </p>
+    </div>
   </div>
 
   <div v-else class="row flex-nowrap overflow-x-scroll gap-2 py-3 px-1">
@@ -63,16 +72,17 @@ export default {
 <style lang="scss" scoped>
 .category-card {
   text-decoration: none;
-  color: white;
+  color: whitesmoke;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   min-width: 200px;
   height: 250px;
-  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+  background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.7)),
     url("../../assets/img/category-img.png");
   background-size: cover;
-  background-position: center;
+  background-position: bottom;
+  border: 1px solid whitesmoke;
 }
 
 .category-card:hover {

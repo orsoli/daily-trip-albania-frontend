@@ -5,6 +5,8 @@ import TourCard from "@/components/tours/TourCard.vue";
 import TourCardLoader from "@/components/tours/TourCardLoader.vue";
 import Feature from "@/components/utils/Feature.vue";
 import CategoryFilter from "@/components/utils/CategoryFilter.vue";
+import CustumizeTrip from "@/components/utils/CustomizeTrip.vue";
+import BaseButton from "@/components/utils/BaseButton.vue";
 
 import { store } from "@/store/store";
 
@@ -26,6 +28,8 @@ export default {
     TourCardLoader,
     Feature,
     CategoryFilter,
+    CustumizeTrip,
+    BaseButton,
   },
 
   methods: {},
@@ -63,12 +67,7 @@ export default {
           <p>
             {{ $t("app_slogan") }}
           </p>
-          <a
-            href="#"
-            class="btn text-light border rounded-4 bg-dark bg-opacity-50 shadow"
-          >
-            {{ $t("explore_albania") }}
-          </a>
+          <BaseButton href="#" text="explore_albania" />
         </div>
         <figure class="d-none d-lg-block p-0">
           <div v-if="imgLoading" id="logo " class="placeholder-glow">
@@ -130,6 +129,22 @@ export default {
 
     <!-- Browsw by Category -->
     <CategoryFilter />
+
+    <!-- HR -->
+    <div
+      class="hr d-flex justify-content-between align-items-center gap-4 my-4"
+    >
+      <div class="border border-1 w-100"></div>
+      <img
+        src="../assets/img/DailyTrip-logo.png"
+        alt="daily-trip-logo"
+        class="h-100"
+      />
+      <div class="border border-1 w-100"></div>
+    </div>
+
+    <!-- Costumize Trip -->
+    <CustumizeTrip />
   </div>
 </template>
 
@@ -140,11 +155,6 @@ export default {
     font-weight: 600;
     color: #ffffff;
     text-shadow: 0 0 10px #000000;
-  }
-
-  a:hover {
-    scale: 1.1;
-    transition: scale 0.3s ease-in-out;
   }
 }
 
@@ -175,5 +185,10 @@ figure {
     border-radius: 20px;
     position: absolute;
   }
+}
+
+.hr {
+  width: 100%;
+  height: 100px;
 }
 </style>

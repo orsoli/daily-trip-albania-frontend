@@ -1,6 +1,7 @@
 <script>
 import RatingStars from "@/components/utils/Rating.vue";
 import TourCardLoader from "./TourCardLoader.vue";
+import BaseButton from "@/components/utils/BaseButton.vue";
 
 export default {
   name: "TourCard",
@@ -21,6 +22,7 @@ export default {
   components: {
     RatingStars,
     TourCardLoader,
+    BaseButton,
   },
 
   methods: {
@@ -67,9 +69,7 @@ export default {
             </h6>
           </div>
           <!-- View tour btn -->
-          <a href="#" class="btn btn-transparent border rounded-4 w-50">
-            {{ $t("view_tour") }}
-          </a>
+          <BaseButton text="view_tour" color="var(--primary)" />
         </div>
       </div>
     </div>
@@ -83,15 +83,9 @@ export default {
   transition: all 0.3s ease-in-out;
 
   .card-body {
-    .card-title,
-    a {
+    .card-title {
       color: $secondary;
     }
-  }
-
-  .card-body a:hover {
-    scale: 1.1;
-    transition: scale 0.3s ease-in-out;
   }
 
   .truncate-multiline {

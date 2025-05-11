@@ -18,6 +18,7 @@ export default {
   <div class="container text-light">
     <!-- Title page -->
     <h1>Tours</h1>
+
     <ToursList />
   </div>
 </template>
