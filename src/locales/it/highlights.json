@@ -1,0 +1,17 @@
+{
+    "highlights": "Highlights",
+    
+    "teamwork": {
+        "title": "Un grande lavoro di squadra",
+        "description": "Siamo un team di professionisti del viaggio, appassionati ed esperti, dedicati a offrirti le migliori esperienze di viaggio in Albania. Il nostro team si impegna a garantire che il tuo viaggio sia indimenticabile, lavorando instancabilmente per creare itinerari unici e personalizzati che si adattino ai tuoi interessi e alle tue preferenze."
+    },
+    "our_vision": {
+        "title": "La nostra visione",
+        "description": "La nostra visione è diventare la principale agenzia di viaggi in Albania, conosciuta per il nostro servizio eccezionale, itinerari unici e impegno verso il turismo sostenibile. Miriamo a mostrare la bellezza e la cultura dell'Albania offrendo ai nostri clienti esperienze indimenticabili."
+    },
+
+    "our_mission": {
+        "title": "La nostra missione",
+        "description": "La nostra missione è fornire ai nostri clienti le migliori esperienze di viaggio in Albania. Siamo dedicati alla creazione di itinerari personalizzati, a offrire un servizio eccezionale e a promuovere il turismo sostenibile. Ci impegniamo a creare ricordi indimenticabili per i nostri clienti, promuovendo al contempo pratiche di viaggio responsabili."
+    }
+}

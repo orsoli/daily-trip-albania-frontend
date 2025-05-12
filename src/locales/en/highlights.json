@@ -1,0 +1,36 @@
+{
+    "highlights": "Highlights",
+    
+    "teamwork": {
+        "title": "Great TeamWork",
+        "description": "We are a team of passionate and experienced travel professionals dedicated to providing you with the best travel experiences in Albania. Our team is committed to ensuring that your trip is unforgettable, and we work tirelessly to create unique and personalized itineraries that cater to your interests and preferences."
+    },
+    "our_vision": {
+        "title": "Our Vision",
+        "description": "Our vision is to be the leading travel Agency in Albania, known for our exceptional service, unique itineraries, and commitment to sustainable tourism. We aim to showcase the beauty and culture of Albania while providing our clients with unforgettable experiences."
+    },
+
+    "our_mission": {
+        "title": "Our Mission",
+        "description": "Our mission is to provide our clients with the best travel experiences in Albania. We are dedicated to offering personalized itineraries, exceptional service, and a commitment to sustainable tourism. We strive to create unforgettable memories for our clients while promoting responsible travel practices."
+    },
+
+    "why_us": {
+        "title": "Why Choose Us",
+        "subtitle": "Our Priority",
+
+        "friendly_guide": {
+            "title": "Friendly Guide",
+            "description": "Our guides are friendly and knowledgeable, ensuring you have a great experience."
+        },
+        "full_facility": {
+            "title": "Full Facility",
+            "description": "We provide all the necessary facilities for a comfortable and enjoyable trip."
+        },
+        "easy_booking": {
+            "title": "Easy Booking",
+            "description": "Our booking process is simple and convenient, making it easy for you to plan your trip."
+        }
+
+    }
+}

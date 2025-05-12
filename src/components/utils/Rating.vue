@@ -36,7 +36,7 @@ export default {
       ></i>
       <i v-else class="bi bi-star empty-star text-light"></i>
     </span>
-    <span class="ps-2 text-light">{{ viewCount }} {{ $t("views") }}</span>
+    <span class="ps-2">{{ viewCount }} {{ $t("views") }}</span>
   </div>
 </template>
 

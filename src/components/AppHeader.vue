@@ -115,7 +115,7 @@ export default {
 
         <!-- Hamburger menu btn -->
         <button
-          class="navbar-toggler border-0 text-light"
+          class="navbar-toggler border-0"
           type="button"
           @click="toggleMenu"
           aria-controls="navbarSupportedContent"
@@ -156,7 +156,7 @@ export default {
             <ul v-if="!search" class="d-flex list-unstyled gap-2 gap-lg-4 m-0">
               <li class="nav-item" v-for="(social, i) in socialList" :key="i">
                 <a
-                  class="nav-link text-light text-nowrap text-shadow"
+                  class="nav-link text-nowrap text-shadow"
                   :href="social.url"
                   target="_blank"
                   rel="noopener noreferrer"
@@ -179,7 +179,7 @@ export default {
                   <input
                     ref="searchInput"
                     type="text"
-                    class="form-control border-0 rounded-4 bg-transparent text-light text-shadow me-5"
+                    class="form-control border-0 rounded-4 bg-transparent text-shadow me-5"
                     :placeholder="$t('search_placeholder')"
                     aria-label="Search"
                     id="search"

@@ -1,0 +1,17 @@
+{
+    "highlights": "Highlights",
+    
+    "teamwork": {
+        "title": "Një punë e shkëlqyer ekipore",
+        "description": "Ne jemi një ekip profesionistësh të apasionuar dhe me përvojë në udhëtime, të përkushtuar për t'ju ofruar përvojat më të mira të udhëtimit në Shqipëri. Ekipi ynë është i angazhuar për të siguruar që udhëtimi juaj të jetë i paharrueshëm, dhe ne punojmë pa u lodhur për të krijuar itinerare unike dhe të personalizuara që i përshtaten interesave dhe preferencave tuaja."
+    },
+    "our_vision": {
+        "title": "Vizioni Jonë",
+        "description": "Vizioni ynë është të jemi Agjencia udhëtimi kryesore në Shqipëri, e njohur për shërbimin tonë të jashtëzakonshëm, itineraret unike dhe angazhimin tonë për turizmin e qëndrueshëm. Ne synojmë të tregojmë bukurinë dhe kulturën e Shqipërisë duke ofruar përvoja të paharrueshme për klientët tanë."
+    },
+
+    "our_mission": {
+        "title": "Misioni Jonë",
+        "description": "Misioni ynë është të ofrojmë klientëve tanë përvojat më të mira të udhëtimit në Shqipëri. Ne jemi të përkushtuar për të ofruar itinerare të personalizuara, shërbim të jashtëzakonshëm dhe një angazhim për turizmin e qëndrueshëm. Ne synojmë të krijojmë kujtime të paharrueshme për klientët tanë ndërsa promovojmë praktikat e udhëtimit përgjegjës."
+    }
+}

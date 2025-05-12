@@ -11,11 +11,18 @@
     "book_now": "Rezervo tani",
     "explore_more": "Zbuloni me shume",
     "browse_by_category": "Lundro sipas kategorive",
-    "create_your_trip": "Krijoni udhetimin tuaj",
-    "customize_your_trip": "Krijojme udhetimin qe do te dashuroni",
-    "custom_trip_description": "Krijojme udhetimin qe do te dashuroni. Jemi ketu per t'ju ndihmuar te planifikoni udhetimin tuaj perfekt ne Shqiperi. Nese po kerkoni nje pushim relaksues ne plazh, nje ekskursion aventuror, ose nje eksplorim kulturor te historise tone te pasur, mund te personalizojme nje tur qe i pershtatet nevojave dhe preferencave tuaja.",
     "see_more": "Shiko me shume",
     "views": "Shikime",
+    
+    "customize_trip": {
+        "title": "Krijojme udhetimin qe do te deshironi",
+        "description": "Jemi ketu per t'ju ndihmuar te planifikoni udhetimin tuaj perfekt ne Shqiperi. Nese po kerkoni nje pushim relaksues ne plazh, nje ekskursion aventuror, ose nje eksplorim kulturor te historise tone te pasur, mund te personalizojme nje tur qe i pershtatet nevojave dhe preferencave tuaja.",
+        "create_your_trip": "Krijoni udhetimin tuaj"
+    },
+
+    "great_team_work": "Një punë e shkëlqyer ekipore",
+    "our_vision": "Vizioni Jone",
+    "our_mission": "Misioni Jone",
 
     "home": "Kreu",
     "tours": "Turet",

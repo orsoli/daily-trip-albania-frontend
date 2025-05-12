@@ -7,6 +7,7 @@ import Feature from "@/components/utils/Feature.vue";
 import CategoryFilter from "@/components/utils/CategoryFilter.vue";
 import CustumizeTrip from "@/components/utils/CustomizeTrip.vue";
 import BaseButton from "@/components/utils/BaseButton.vue";
+import Highlights from "@/components/utils/Highlights.vue";
 
 import { store } from "@/store/store";
 
@@ -30,6 +31,7 @@ export default {
     CategoryFilter,
     CustumizeTrip,
     BaseButton,
+    Highlights,
   },
 
   methods: {},
@@ -55,7 +57,7 @@ export default {
 </script>
 
 <template>
-  <div class="container text-light">
+  <div class="container">
     <div class="d-lg-flex align-items-center gap-5">
       <!-- Page content -->
       <div class="col-lg-5 mb-5 mb-lg-0">
@@ -146,6 +148,8 @@ export default {
     <!-- Costumize Trip -->
     <CustumizeTrip />
   </div>
+  <!-- Highlights -->
+  <Highlights />
 </template>
 
 <style lang="scss" scoped>

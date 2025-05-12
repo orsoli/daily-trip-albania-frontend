@@ -41,12 +41,12 @@ export default {
 
     <!-- Text -->
     <div class="col">
-      <h1 class="text-center fw-bold">{{ $t("customize_your_trip") }}</h1>
+      <h1 class="fw-bold">{{ $t("customize_trip.title") }}</h1>
       <p class="fw-bold">
-        {{ $t("custom_trip_description") }}
+        {{ $t("customize_trip.description") }}
       </p>
       <!-- Button -->
-      <BaseButton href="#" text="create_your_trip" />
+      <BaseButton href="#" text="customize_trip.create_your_trip" />
     </div>
   </div>
 </template>
