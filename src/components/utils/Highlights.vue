@@ -66,7 +66,7 @@ export default {
 </script>
 
 <template>
-  <div class="g-2 my-5 px-4 py-2">
+  <div class="g-2 my-5 py-2">
     <div class="row row-cols-1 row-cols-md-3">
       <div
         v-for="highlight in translatedHighlights"

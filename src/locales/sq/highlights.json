@@ -13,5 +13,24 @@
     "our_mission": {
         "title": "Misioni Jonë",
         "description": "Misioni ynë është të ofrojmë klientëve tanë përvojat më të mira të udhëtimit në Shqipëri. Ne jemi të përkushtuar për të ofruar itinerare të personalizuara, shërbim të jashtëzakonshëm dhe një angazhim për turizmin e qëndrueshëm. Ne synojmë të krijojmë kujtime të paharrueshme për klientët tanë ndërsa promovojmë praktikat e udhëtimit përgjegjës."
+    },
+
+    "why_us": {
+        "title": "Pse të na Zgjidhni",
+        "subtitle": "Prioriteti Ynë",
+
+        "friendly_guide": {
+            "title": "Guida Miqësore",
+            "description": "Guida jonë janë miqësore dhe të ditur, duke siguruar që të keni një përvojë të shkëlqyer."
+        },
+        "full_facility": {
+            "title": "Të Gjitha Pajisjet",
+            "description": "Ne ofrojmë të gjitha pajisjet e nevojshme për një udhëtim të rehatshëm dhe të këndshëm."
+        },
+        "easy_booking": {
+            "title": "Rezervim i Lehtë",
+            "description": "Procesi ynë i rezervimit është i thjeshtë dhe i përshtatshëm, duke e bërë të lehtë planifikimin e udhëtimit tuaj."
+        }
+
     }
 }

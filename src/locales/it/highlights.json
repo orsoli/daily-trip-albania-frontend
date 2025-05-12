@@ -13,5 +13,23 @@
     "our_mission": {
         "title": "La nostra missione",
         "description": "La nostra missione è fornire ai nostri clienti le migliori esperienze di viaggio in Albania. Siamo dedicati alla creazione di itinerari personalizzati, a offrire un servizio eccezionale e a promuovere il turismo sostenibile. Ci impegniamo a creare ricordi indimenticabili per i nostri clienti, promuovendo al contempo pratiche di viaggio responsabili."
+    },
+
+    "why_us": {
+        "title": "Perché Noi",
+        "subtitle": "La nostra priorità",
+
+        "friendly_guide": {
+            "title": "Guide amichevoli",
+            "description": "Le nostre guide sono amichevoli e competenti, garantendo che tu abbia un'esperienza fantastica."
+        },
+        "full_facility": {
+            "title": "Tutti i servizi",
+            "description": "Forniamo tutte le strutture necessarie per un viaggio confortevole e piacevole."
+        },
+        "easy_booking": {
+            "title": "Prenotazione facile",
+            "description": "Il nostro processo di prenotazione è semplice e conveniente, rendendo facile pianificare il tuo viaggio."
+        }
     }
 }
