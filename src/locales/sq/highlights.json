@@ -23,13 +23,25 @@
             "title": "Guida Miqësore",
             "description": "Guida jonë janë miqësore dhe të ditur, duke siguruar që të keni një përvojë të shkëlqyer."
         },
-        "full_facility": {
-            "title": "Të Gjitha Pajisjet",
-            "description": "Ne ofrojmë të gjitha pajisjet e nevojshme për një udhëtim të rehatshëm dhe të këndshëm."
-        },
         "easy_booking": {
             "title": "Rezervim i Lehtë",
             "description": "Procesi ynë i rezervimit është i thjeshtë dhe i përshtatshëm, duke e bërë të lehtë planifikimin e udhëtimit tuaj."
+        },
+        "no_booking_fees": {
+            "title": "Pa tarifa rezervimi",
+            "description": "Nuk do të paguani asnjë tarifë shtesë rezervimi – çmimi që shihni është çmimi që paguani."
+        },
+        "easy_cancellation": {
+            "title": "Anulim i lehtë",
+            "description": "Mund ta anuloni rezervimin tuaj lehtësisht dhe pa shqetësime nëse planet tuaja ndryshojnë."
+        },
+        "free_tickets": {
+            "title": "Bileta falas",
+            "description": "Shijoni bileta falas për atraksione të përzgjedhura si pjesë e paketës suaj të udhëtimit."
+        },
+        "best_price_guarantee": {
+            "title": "Garanci për çmimin më të mirë",
+            "description": "Ne garantojmë çmimet më të mira për turet tona, duke siguruar që të merrni vlerën më të mirë për paratë tuaja."
         }
 
     }

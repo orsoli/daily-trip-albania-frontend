@@ -23,13 +23,26 @@
             "title": "Guide amichevoli",
             "description": "Le nostre guide sono amichevoli e competenti, garantendo che tu abbia un'esperienza fantastica."
         },
-        "full_facility": {
-            "title": "Tutti i servizi",
-            "description": "Forniamo tutte le strutture necessarie per un viaggio confortevole e piacevole."
-        },
         "easy_booking": {
             "title": "Prenotazione facile",
             "description": "Il nostro processo di prenotazione è semplice e conveniente, rendendo facile pianificare il tuo viaggio."
+        },
+        "no_booking_fees": {
+            "title": "Nessuna commissione di prenotazione",
+            "description": "Non ci sono costi aggiuntivi di prenotazione – il prezzo che vedi è quello che paghi."
+        },
+        "easy_cancellation": {
+            "title": "Cancellazione facile",
+            "description": "Puoi cancellare facilmente la tua prenotazione senza problemi, offrendo flessibilità e tranquillità."
+
+        },
+        "free_tickets": {
+            "title": "Biglietti gratuiti",
+            "description": "Offriamo biglietti gratuiti per alcune attrazioni selezionate, aggiungendo valore al tuo viaggio senza costi aggiuntivi."
+        },
+        "best_price_guarantee": {
+            "title": "Miglior prezzo garantito",
+            "description": "Ti garantiamo il miglior prezzo disponibile per i nostri tour, assicurandoti il massimo valore per il tuo denaro."
         }
     }
 }

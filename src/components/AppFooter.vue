@@ -1,5 +1,4 @@
 <script>
-import Highlights from "./utils/Highlights.vue";
 export default {
   data() {
     return {
@@ -72,9 +71,7 @@ export default {
     };
   },
 
-  components: {
-    Highlights,
-  },
+  components: {},
 
   methods: {},
 };
@@ -82,9 +79,8 @@ export default {
 
 <template>
   <div class="footer p-5 pb-1">
-    <Highlights />
     <div class="row row-cols-1 row-cols-md-3">
-      <div class="col text-center">
+      <div class="col text-md-center">
         <h3>{{ $t(agencyDetails.text) }}</h3>
         <p>
           {{ agencyDetails.address }} <br />
@@ -93,7 +89,11 @@ export default {
           {{ agencyDetails.country }}
         </p>
       </div>
-      <div v-for="contact in contactDetails" :key="contact.id" class="col ps-5">
+      <div
+        v-for="contact in contactDetails"
+        :key="contact.id"
+        class="col ps-md-5"
+      >
         <h3>{{ $t(contact.text) }}</h3>
         <ul class="list-unstyled">
           <li v-for="link in contact.links" :key="link.id">
@@ -105,18 +105,20 @@ export default {
         </ul>
       </div>
     </div>
-    <h5 class="text-center">
-      {{ $t("footer", { year: currentYear }) }}
-    </h5>
+    <div class="all-reserved">
+      <h5 class="text-center">
+        {{ $t("footer", { year: currentYear }) }}
+      </h5>
+    </div>
   </div>
 </template>
 
 <style lang="scss" scoped>
 @use "../style/variables" as *;
 .footer {
-  background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.9));
+  background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 1));
   h3 {
-    color: $primary;
+    color: $secondary;
   }
 
   li:hover {

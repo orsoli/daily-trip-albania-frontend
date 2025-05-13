@@ -23,14 +23,27 @@
             "title": "Friendly Guide",
             "description": "Our guides are friendly and knowledgeable, ensuring you have a great experience."
         },
-        "full_facility": {
-            "title": "Full Facility",
-            "description": "We provide all the necessary facilities for a comfortable and enjoyable trip."
-        },
         "easy_booking": {
             "title": "Easy Booking",
             "description": "Our booking process is simple and convenient, making it easy for you to plan your trip."
-        }
+        },
+        "no_booking_fees": {
+            "title": "No booking fees",
+            "description": "You won't be charged any additional booking fees – the price you see is the price you pay."
+        },
+        "easy_cancellation": {
+            "title": "Easy cancellation",
+            "description": "You can cancel your booking easily and without hassle if your plans change."
 
+        },
+        "free_tickets": {
+            "title": "Free Tickets",
+            "description": "Enjoy complimentary tickets to select attractions as part of your travel package."
+        },
+        "best_price_guarantee": {
+            "title": "Best price guarantee",
+            "description": "We guarantee the best prices for our tours, ensuring you get great value for your money."
+        }
     }
+
 }

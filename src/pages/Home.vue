@@ -148,6 +148,8 @@ export default {
     <!-- Costumize Trip -->
     <CustumizeTrip />
   </div>
+  <!-- hilights -->
+  <Highlights />
 </template>
 
 <style lang="scss" scoped>

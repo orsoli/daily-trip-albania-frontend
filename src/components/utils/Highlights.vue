@@ -30,16 +30,34 @@ export default {
           icon: "bi bi-person-heart",
         },
         {
-          id: "fullFacility",
-          title: "why_us.full_facility.title",
-          description: "why_us.full_facility.description",
-          icon: "bi bi-luggage-fill",
-        },
-        {
           id: "easyBooking",
           title: "why_us.easy_booking.title",
           description: "why_us.easy_booking.description",
           icon: "bi bi-calendar-day",
+        },
+        {
+          id: "noBookingFees",
+          title: "why_us.no_booking_fees.title",
+          description: "why_us.no_booking_fees.description",
+          icon: "bi bi-x-circle",
+        },
+        {
+          id: "easyCancellation",
+          title: "why_us.easy_cancellation.title",
+          description: "why_us.easy_cancellation.description",
+          icon: "bi bi-calendar2-x",
+        },
+        {
+          id: "freeTickets",
+          title: "why_us.free_tickets.title",
+          description: "why_us.free_tickets.description",
+          icon: "bi bi-ticket-detailed",
+        },
+        {
+          id: "bestPriceGuarantee",
+          title: "why_us.best_price_guarantee.title",
+          description: "why_us.best_price_guarantee.description",
+          icon: "bi bi-tags",
         },
       ],
     };
@@ -66,7 +84,7 @@ export default {
 </script>
 
 <template>
-  <div class="g-2 my-5 py-2">
+  <div class="g-2 my-5 px-5">
     <div class="row row-cols-1 row-cols-md-3">
       <div
         v-for="highlight in translatedHighlights"
@@ -93,7 +111,7 @@ export default {
         </h5>
         <div class="hr"></div>
       </div>
-      <div class="row row-cols-1 row-cols-md-3">
+      <div class="row row-cols-1 row-cols-md-3 text-center">
         <div
           v-for="highlight in translatedWhyUs"
           :key="highlight.id"
@@ -103,7 +121,7 @@ export default {
           <h5>
             {{ highlight.title }}
           </h5>
-          <p>{{ highlight.description }}</p>
+          <p class="px-3">{{ highlight.description }}</p>
         </div>
       </div>
     </div>
@@ -118,10 +136,6 @@ h2 {
   font-weight: bold;
 }
 
-h5 {
-  color: $secondary;
-}
-
 .hr {
   width: 100px;
   border: 2px solid $secondary;
@@ -130,7 +144,7 @@ h5 {
 
 i {
   color: $secondary;
-  font-size: 50px;
+  font-size: 30px;
   padding-left: 20px;
 }
 </style>
