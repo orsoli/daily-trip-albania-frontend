@@ -29,7 +29,7 @@ export default {
 
 <template>
   <nav>
-    <ul class="pagination gap-1">
+    <ul class="pagination gap-1 my-3">
       <li v-for="link in linksLabelNr" :key="link.label" class="page-item">
         <button
           class="page-link fw-bolder border-0 text-light"

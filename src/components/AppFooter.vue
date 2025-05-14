@@ -120,10 +120,10 @@ export default {
   h3 {
     color: $secondary;
   }
-
-  li:hover {
-    scale: 1.05;
-    transition: all 0.3s ease-in-out;
-  }
+}
+a:hover i {
+  display: inline-block;
+  transform: scale(1.2);
+  transition: transform 0.3s ease-in-out;
 }
 </style>

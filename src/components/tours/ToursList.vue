@@ -1,9 +1,8 @@
 <script>
-import AppLoader from "@/components/AppLoader.vue";
 import TourCard from "@/components/tours/TourCard.vue";
 import TourCardLoader from "./TourCardLoader.vue";
 import Paginate from "@/components/utils/Paginate.vue";
-import EventBus from "@/utils/event-bus";
+import eventBus from "@/js/utils/event-bus";
 import { ToursStore } from "@/store/toursStore";
 
 export default {
@@ -16,7 +15,6 @@ export default {
   },
 
   components: {
-    AppLoader,
     TourCard,
     TourCardLoader,
     Paginate,
@@ -26,9 +24,10 @@ export default {
     // Get tours page
     getToursPage(page) {
       // Emit an event to fetch the tours page
-      EventBus.emit("scrollToTop");
+      eventBus.emit("scrollToTop");
 
-      ToursStore.fetchResources(ToursStore.apiUrl, page, {});
+      ToursStore.page = page;
+      ToursStore.fetchResources({});
     },
   },
 
@@ -62,7 +61,7 @@ export default {
       <TourCardLoader />
     </div>
   </div>
-  <div v-else class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-3">
+  <div v-else class="row row-cols-1 row-cols-md-2 row-cols-lg-4">
     <!-- Tours -->
     <TourCard v-for="tour in tours" :key="tour.id" :tour="tour" />
 

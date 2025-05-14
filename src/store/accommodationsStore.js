@@ -11,13 +11,13 @@ export const AccommodationsStore = reactive({
 
   // Methods
   // Get resources
-  async fetchResources(url, pageNr = 1, extraParams = {}) {
+  async fetchResources(extraParams = {}) {
     try {
       this.loading = true;
 
-      const response = await axios.get(url, {
+      const response = await axios.get(this.apiUrl, {
         params: {
-          page: pageNr,
+          page: this.page,
           ...extraParams,
         },
       });
