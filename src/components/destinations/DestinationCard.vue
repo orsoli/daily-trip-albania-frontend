@@ -61,9 +61,9 @@ a {
 
   &:hover {
     img {
-      transform: scale(1.05);
+      transform: scale(1.02);
       filter: brightness(1);
-      box-shadow: 0 0 4px 5px whitesmoke;
+      box-shadow: 0 0 10px 3px rgba(224, 224, 224, 0.764);
     }
     .card-text {
       display: none;

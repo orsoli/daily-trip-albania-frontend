@@ -19,19 +19,19 @@ export default {
           links: [
             {
               id: "celNr",
-              href: "#",
-              label: "AL +355 69 382 9526",
+              href: "tel:+355693289526",
+              label: "AL +355 69 328 9526",
               icon: "bi bi-telephone",
             },
             {
               id: "whatsApp",
-              href: "#",
-              label: "AL +355 69 382 9526",
+              href: "https://wa.me/355693289526?text=I'm%20interested%20in...",
+              label: "AL +355 69 328 9526",
               icon: "bi bi-whatsapp",
             },
             {
               id: "email",
-              href: "#",
+              href: "mailto:dailytripalbania@gmail.com?subject=Tour%20Request&body=Hi,%20I%20am%20interested%20in%20your%20tours.",
               label: "dailytripalbania@gmail.com",
               icon: "bi bi-envelope",
             },
@@ -97,7 +97,12 @@ export default {
         <h3>{{ $t(contact.text) }}</h3>
         <ul class="list-unstyled">
           <li v-for="link in contact.links" :key="link.id">
-            <a :href="link.href" class="text-light text-decoration-none">
+            <a
+              :href="link.href"
+              class="text-light text-decoration-none"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <i v-if="link.icon" :class="link.icon" class="me-1"></i>
               {{ link.label }}
             </a>
