@@ -1,11 +1,14 @@
 <script>
+import GoBackButton from "@/components/utils/GoBackButton.vue";
 export default {
   name: "Accommodations",
   data() {
     return {};
   },
 
-  components: {},
+  components: {
+    GoBackButton,
+  },
 
   methods: {},
 };
@@ -13,6 +16,7 @@ export default {
 
 <template>
   <div class="container text-light">
+    <GoBackButton />
     <h1>Launching soon — get ready to explore!</h1>
     <div class="text-center">
       <img

@@ -44,13 +44,13 @@ export default {
 
   computed: {
     bestDestinations() {
-      return store.allDestinations.data;
+      return store.allDestinations;
     },
     bestTours() {
-      return store.allTours.data;
+      return store.allTours;
     },
     categories() {
-      return store.categories.data;
+      return store.categories;
     },
   },
 };
@@ -99,14 +99,17 @@ export default {
           <div v-for="n in 4" :key="n" class="placeholder col-12"></div>
         </div>
         <!-- Carousel -->
-        <Carousel v-else :items="bestDestinations" />
+        <Carousel
+          v-else
+          :items="bestDestinations"
+          routeName="destination.details"
+        />
       </div>
     </div>
 
     <!-- Feature section -->
     <Feature />
 
-    <!-- Popular Tours -->
     <div class="popular-tours mb-5">
       <div class="border-bottom border-2 w-50 mb-5">
         <h4>{{ $t("popular_tours") }}</h4>

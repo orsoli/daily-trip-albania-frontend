@@ -1,5 +1,6 @@
 <script>
 import ToursList from "@/components/tours/ToursList.vue";
+import GoBackButton from "@/components/utils/GoBackButton.vue";
 export default {
   name: "Tours",
   data() {
@@ -8,6 +9,7 @@ export default {
 
   components: {
     ToursList,
+    GoBackButton,
   },
 
   methods: {},
@@ -16,6 +18,9 @@ export default {
 
 <template>
   <div class="container text-light">
+    <!-- Back btn -->
+    <GoBackButton />
+
     <!-- Title page -->
     <h1>Tours</h1>
 

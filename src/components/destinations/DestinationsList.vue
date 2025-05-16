@@ -40,11 +40,11 @@ export default {
     },
 
     links() {
-      return DestinationsStore.list.links;
+      return DestinationsStore.list.meta.links;
     },
 
     lastPage() {
-      return DestinationsStore.list.last_page;
+      return DestinationsStore.list.meta.last_page;
     },
   },
 };
@@ -57,18 +57,21 @@ export default {
   >
     <DestinationCardLoader v-for="n in 8" :key="n" />
   </div>
-  <div v-else class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-3">
-    <DestinationCard
-      v-for="destination in destinations"
-      :key="destination.id"
-      :destination="destination"
+  <div v-else>
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-3">
+      <DestinationCard
+        v-for="destination in destinations"
+        :key="destination.id"
+        :destination="destination"
+      />
+    </div>
+    <Paginate
+      v-if="lastPage > 1"
+      :links="links"
+      page-name="destinations"
+      @page-changed="getDestinationsPage"
     />
   </div>
-  <Paginate
-    v-if="lastPage > 1"
-    :links="links"
-    @page-changed="getDestinationsPage"
-  />
 </template>
 
 <style lang="scss" scoped></style>

@@ -9,6 +9,10 @@ export default {
       type: Array,
       required: true,
     },
+    pageName: {
+      type: String,
+      required: true,
+    },
   },
   computed: {
     linksLabelNr() {
@@ -31,13 +35,14 @@ export default {
   <nav>
     <ul class="pagination gap-1 my-3">
       <li v-for="link in linksLabelNr" :key="link.label" class="page-item">
-        <button
+        <router-link
+          :to="{ name: pageName, query: { page: parseInt(link.label) } }"
           class="page-link fw-bolder border-0 text-light"
           :class="link.active ? 'bg-light text-dark disabled' : 'bg-dark'"
           @click="sendPageNr(parseInt(link.label))"
         >
           {{ link.label }}
-        </button>
+        </router-link>
       </li>
     </ul>
   </nav>

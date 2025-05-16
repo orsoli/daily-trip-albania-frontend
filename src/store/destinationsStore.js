@@ -23,7 +23,7 @@ export const DestinationsStore = reactive({
       });
 
       if (this.list !== undefined) {
-        this.list = response.data.data;
+        this.list = response.data;
       } else {
         console.warn(`Variable '${this.list}' not found in store.`);
       }

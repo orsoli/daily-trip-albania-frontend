@@ -12,6 +12,10 @@ export default {
       type: Array,
       required: true,
     },
+    routeName: {
+      type: String,
+      required: true,
+    },
   },
 
   methods: {
@@ -87,9 +91,9 @@ export default {
     <!-- Before spacer -->
     <div class="spacer"></div>
     <div class="d-flex justify-content-center">
-      <a
-        href="#"
+      <router-link
         v-for="(item, index) in items"
+        :to="{ name: routeName, params: { slug: item.slug } }"
         :key="index"
         class="item"
         :style="getStyle(index)"
@@ -105,7 +109,7 @@ export default {
         >
           {{ item.name }}
         </h5>
-      </a>
+      </router-link>
     </div>
     <!-- After spacer -->
     <div class="spacer"></div>
