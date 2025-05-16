@@ -1,10 +1,12 @@
 import Home from "../pages/Home.vue";
-import Tours from "../pages/Tours.vue";
+import Tours from "../pages/tours/Tours.vue";
+import TourDetails from "../pages/tours/TourDetails.vue";
 import Accommodations from "../pages/Accommodations.vue";
 import About from "../pages/About.vue";
 import Contact from "../pages/Contact.vue";
-import Destinations from "../pages/Destinations.vue";
-import Gallery from "@/pages/Gallery.vue";
+import Destinations from "../pages/destinations/Destinations.vue";
+import DestinationDetails from "../pages/destinations/DestinationDetails.vue";
+import Gallery from "../pages/Gallery.vue";
 
 import i18n from "../i18n/index.js";
 
@@ -15,30 +17,56 @@ export const routes = [
   },
   {
     path: "/:lang",
+    name: "home",
+    component: Home,
+    meta: {
+      titleKey: "home",
+    },
+  },
+  {
+    path: "/:lang",
     children: [
       {
-        path: "",
-        name: "home",
-        component: Home,
-        meta: {
-          titleKey: "home",
-        },
-      },
-      {
-        path: `tours`,
-        name: "tours",
-        component: Tours,
-        meta: {
-          titleKey: "tours",
-        },
+        path: "tours",
+        children: [
+          {
+            path: "",
+            name: "tours",
+            component: Tours,
+            meta: {
+              titleKey: "tours",
+            },
+          },
+          {
+            path: ":slug",
+            name: "tour.details",
+            component: TourDetails,
+            meta: {
+              dynamicTitleFromSlug: true,
+            },
+          },
+        ],
       },
       {
         path: "destinations",
-        name: "destinations",
-        component: Destinations,
-        meta: {
-          titleKey: "destinations",
-        },
+        children: [
+          {
+            path: "",
+            name: "destinations",
+            component: Destinations,
+            meta: {
+              titleKey: "destinations",
+            },
+          },
+          {
+            path: `:slug`,
+            name: "destination.details",
+            component: DestinationDetails,
+            meta: {
+              dynamicTitleFromSlug: true,
+            },
+          },
+        ],
       },
       {
         path: "accommodations",

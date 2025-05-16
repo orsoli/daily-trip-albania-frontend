@@ -5,6 +5,10 @@ export default {
     return {};
   },
   props: {
+    to: {
+      type: [String, Object],
+      default: null,
+    },
     href: {
       type: String,
       default: "#",
@@ -30,14 +34,16 @@ export default {
 </script>
 
 <template>
-  <a
-    :href="href"
+  <component
+    :is="to ? 'router-link' : 'a'"
+    :to="to"
+    :href="to ? null : href"
     class="btn border rounded-4 bg-dark bg-opacity-50 shadow"
     :style="{ color: color }"
   >
     {{ $t(text) }}
     <i v-if="icon" :class="icon" class="ms-2"></i>
-  </a>
+  </component>
 </template>
 
 <style lang="scss" scoped>

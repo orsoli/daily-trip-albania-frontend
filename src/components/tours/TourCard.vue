@@ -39,7 +39,6 @@ export default {
     <TourCardLoader v-if="imgLoading" />
     <!-- Card -->
     <div
-      href="#"
       class="card bg-dark bg-opacity-75 border-0 rounded-4 text-light overflow-hidden"
     >
       <img
@@ -69,7 +68,11 @@ export default {
             </h6>
           </div>
           <!-- View tour btn -->
-          <BaseButton text="view_tour" color="var(--primary)" />
+          <BaseButton
+            text="view_tour"
+            color="var(--primary)"
+            :to="{ name: 'tour.details', params: { slug: tour.slug } }"
+          />
         </div>
       </div>
     </div>

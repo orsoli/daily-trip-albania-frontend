@@ -30,7 +30,9 @@ export default {
 </script>
 
 <template>
-  <a href="#">
+  <router-link
+    :to="{ name: 'destination.details', params: { slug: destination.slug } }"
+  >
     <DestinationCardLoader v-if="imgLoading" />
     <div class="col">
       <div class="card text-bg-dark">
@@ -47,7 +49,7 @@ export default {
         </div>
       </div>
     </div>
-  </a>
+  </router-link>
 </template>
 
 <style lang="scss" scoped>

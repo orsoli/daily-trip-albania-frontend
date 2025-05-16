@@ -17,26 +17,29 @@ export default {
       search: false,
       // Header and social lists
       headerList: [
-        { text: "home", url: "home" },
-        { text: "tours", url: "tours" },
-        { text: "destinations", url: "destinations" },
-        { text: "accommodations", url: "accommodations" },
-        { text: "about_us", url: "about-us" },
-        { text: "contacts", url: "contacts" },
-        { text: "gallery", url: "gallery" },
+        { id: "home", text: "home", url: "home" },
+        { id: "tours", text: "tours", url: "tours" },
+        { id: "destinations", text: "destinations", url: "destinations" },
+        { id: "accommodations", text: "accommodations", url: "accommodations" },
+        { id: "about-us", text: "about_us", url: "about-us" },
+        { id: "centacts", text: "contacts", url: "contacts" },
+        { id: "gallery", text: "gallery", url: "gallery" },
       ],
       socialList: [
         {
+          id: "insta",
           name: "Instagram",
           icon: "<i class='bi bi-instagram'></i>",
           url: "https://www.instagram.com/dailytrip.albania/",
         },
         {
+          id: "tiktok",
           name: "TikTok",
           icon: "<i class='bi bi-tiktok'></i>",
           url: "https://www.tiktok.com/@dailytripalbania?_t=ZM-8vlxVOeDQpT&_r=1",
         },
         {
+          id: "youtube",
           name: "Youtube",
           icon: "<i class='bi bi-youtube text-danger'></i>",
           url: "https://www.youtube.com/@dailytripalbania",
@@ -140,8 +143,8 @@ export default {
             <ul class="navbar-nav ps-3">
               <li
                 class="nav-item"
-                v-for="(header, i) in translatedHeaders"
-                :key="i"
+                v-for="header in translatedHeaders"
+                :key="header.id"
               >
                 <router-link
                   class="nav-link text-light text-nowrap text-shadow"
@@ -154,7 +157,11 @@ export default {
             </ul>
             <!-- Socials -->
             <ul v-if="!search" class="d-flex list-unstyled gap-2 gap-lg-4 m-0">
-              <li class="nav-item" v-for="(social, i) in socialList" :key="i">
+              <li
+                class="nav-item"
+                v-for="social in socialList"
+                :key="social.id"
+              >
                 <a
                   class="nav-link text-nowrap text-shadow"
                   :href="social.url"
@@ -272,7 +279,7 @@ export default {
   scale: 1.1;
 }
 
-:deep(.router-link-exact-active) {
+:deep(.router-link-active) {
   color: $secondary !important;
 }
 

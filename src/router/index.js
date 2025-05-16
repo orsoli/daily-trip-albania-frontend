@@ -10,8 +10,19 @@ const router = createRouter({
 router.beforeEach((to, from, next) => {
   const { t, availableLocales } = i18n.global;
   const titleKey = to.meta.titleKey || "app_title";
-  document.title =
-    titleKey === "home" ? t("app_title") : `${t(titleKey)} - ${t("app_title")}`;
+
+  if (to.meta.dynamicTitleFromSlug && to.params.slug) {
+    const slug = to.params.slug;
+    const capitalizedSlug = slug
+      .split("-")
+      .map((word) => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
+      .join(" ");
+    document.title = `${capitalizedSlug} | ${t("app_title")}`;
+  } else if (titleKey === "home") {
+    document.title = t("app_title");
+  } else {
+    document.title = `${t(titleKey)} | ${t("app_title")}`;
+  }
 
   let lang = to.params.lang;
 

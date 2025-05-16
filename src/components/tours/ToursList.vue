@@ -61,7 +61,7 @@ export default {
       <TourCardLoader />
     </div>
   </div>
-  <div v-else class="row row-cols-1 row-cols-md-2 row-cols-lg-4">
+  <div v-else class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-3">
     <!-- Tours -->
     <TourCard v-for="tour in tours" :key="tour.id" :tour="tour" />
 
