@@ -3,16 +3,46 @@
         "al": "ALBANIA"
     },
 
+    "meeting_point": {
+        "text": "Meeting Point",
+        "details": [
+            {
+                "address": "📍 SARANDE: Onhezmi Street.",
+                "map_url": "https://maps.app.goo.gl/NAzrVviVdXJ775rK6"
+            }, 
+            {
+                "address":"📍 TIRANE: 'Asllan Rusi' Sports Palace, 'Zogu i Zi' area.",
+                "map_url": "https://maps.app.goo.gl/tixNJrjJV7NdpF2F8"
+            }
+        ],
+        "description": "📢 In some cases, when we are dealing with a group located at the same spot, our guide can come and pick you up from your location, as long as the distance is not too far.",
+        "go_to_map": "👉 Open in Google Maps"
+    },
+
     "popular_destinations": "Popular Destinations",
     "popular_tours": "Popular Tours",
     "popular_accommodations":"Popular Accommodations",
+    "duration": "Duration",
+    "difficulty": "Difficulty",
+    "popularity": "Popularity",
+    "itinerary": "Itinerary",
 
     "explore_albania": "Explore Albania",
     "book_now": "Book Now",
+    "book_now_pay_later": "Reserve now & pay later to book your spot and pay nothing today",
     "explore_more": "Explore More",
+    "categories": "Categories",
     "browse_by_category": "Browse by Category",
     "see_more": "See More",
     "views":  "Views",
+    "overview": "Overview",
+    "services": "Services",
+    "includes": "Includes",
+    "about_this_tour": "About this Tour",
+    "start_at": "Start at",
+    "arrive_at": "Arrive at",
+    "your_location": "Your location",
+    "full_description": "Full Description",
 
     "agency": "Agency",
     "customer_care": "Customer Care",

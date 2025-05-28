@@ -1,18 +1,48 @@
 {
-    "destinations_country":    {
+    "destinations_country": {
         "al": "SHQIPERIA"
+    },
+
+    "meeting_point": {
+        "text": "Vendi i Takimit",
+        "details": [
+            {
+                "address": "📍 SARANDE: Rruga Onhezmi.",
+                "map_url": "https://maps.app.goo.gl/NAzrVviVdXJ775rK6"
+            }, 
+            {
+                "address":"📍 TIRANE: Pallati i Sportit 'Asllan Rusi',Zona 'Zogu i Zi'.",
+                "map_url": "https://maps.app.goo.gl/tixNJrjJV7NdpF2F8"
+            }
+        ],
+        "description": "📢 Në disa raste, kur kemi të bëjmë me një grup që ndodhet në të njëjtën pikë, guida jonë mund të vijë t’ju marrë në vendndodhjen tuaj, për sa kohë që distanca nuk është shumë e largët.",
+        "go_to_map": "👉 Hap ne Google Maps"
     },
 
     "popular_destinations": "Destinacionet me te Populluara",
     "popular_tours": "Turet me te Populluar",
     "popular_accommodations": "Akomodimet me te Populluar",
+    "duration": "Kohezgjatja",
+    "difficulty": "Veshtiresia",
+    "popularity": "Popullariteti",
+    "itinerary": "Itinerari",
 
     "explore_albania": "Zbuloni Shqiperine",
     "book_now": "Rezervo tani",
+    "book_now_pay_later": "Rezervo tani dhe paguaj më vonë për të siguruar vendin tuaj pa pagesë sot",
     "explore_more": "Zbuloni me shume",
+    "categories": "Kategorite",
     "browse_by_category": "Lundro sipas kategorive",
     "see_more": "Shiko me shume",
     "views": "Shikime",
+    "overview": "Përmbledhje",
+    "services": "Sherbimet",
+    "includes": "Përfshin",
+    "about_this_tour": "Rreth këtij turi",
+    "start_at": "Nisja në",
+    "arrive_at": "Mbërritja në",
+    "your_location": "Vendndodhja juaj",
+    "full_description": "Përshkrimi i plotë",
 
     "agency": "Agjencia",
     "customer_care": "Kujdesi ndaj Klientit",

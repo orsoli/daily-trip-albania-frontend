@@ -3,16 +3,46 @@
         "al": "L'ALBANIA"
     },
 
+    "meeting_point": {
+        "text": "Punto d'incontro",
+        "details": [
+            {
+                "address": "📍 SARANDE: Strada Onhezmi.",
+                "map_url": "https://maps.app.goo.gl/NAzrVviVdXJ775rK6"
+            }, 
+            {
+                "address":"📍 TIRANE: Pallazzetto dello Sport 'Asllan Rusi',Zona 'Zogu i Zi'.",
+                "map_url": "https://maps.app.goo.gl/tixNJrjJV7NdpF2F8"
+            }
+        ],
+        "description": "📢 In alcuni casi, quando si tratta di un gruppo che si trova nello stesso punto, la nostra guida può venire a prendervi direttamente dalla vostra posizione, purché la distanza non sia troppo elevata.",
+        "go_to_map": "👉 Apri in Google Maps"
+    },
+
     "popular_destinations": "Destinazione popolare",
     "popular_tours": "Tour popolari",
     "popular_accommodations": "Alloggi popolari",
+    "duration": "Durata ",
+    "difficulty": "Difficoltà",
+    "popularity": "Popolarità",
+    "itinerary": "Itinerario",
 
     "explore_albania": "Scopri l'Albania",
     "book_now": "Prenota ora",
+    "book_now_pay_later": "Prenota ora e paga dopo per riservare il tuo posto senza pagare nulla oggi",
     "explore_more": "Esplora di più",
+    "categories": "Categorie",
     "browse_by_category": "Sfoglia per categoria",
     "see_more": "Scopri di più",
     "views": "Visualizzazioni",
+    "overview": "Panoramica",
+    "services": "Servizi",
+    "includes": "Include",
+    "about_this_tour": "Informazioni su questo tour",
+    "start_at": "Inizia da",
+    "arrive_at": "Arriva a",
+    "your_location": "La tua posizione",
+    "full_description": "Descrizione completa",
 
     "agency": "Agenzia",
     "customer_care": "Assistenza Clienti",

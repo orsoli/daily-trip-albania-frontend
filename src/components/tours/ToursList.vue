@@ -4,7 +4,6 @@ import TourCardLoader from "./TourCardLoader.vue";
 import Paginate from "@/components/utils/Paginate.vue";
 import eventBus from "@/js/utils/event-bus";
 import { ToursStore } from "@/store/toursStore";
-import router from "@/router";
 
 export default {
   name: "ToursList",

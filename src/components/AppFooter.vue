@@ -31,8 +31,8 @@ export default {
             },
             {
               id: "email",
-              href: "mailto:dailytripalbania@gmail.com?subject=Tour%20Request&body=Hi,%20I%20am%20interested%20in%20your%20tours.",
-              label: "dailytripalbania@gmail.com",
+              href: "mailto:contact@dailytripalbania.travel?subject=Tour%20Request&body=Hi,%20I%20am%20interested%20in%20your%20tours.",
+              label: "contact@dailytripalbania.travel",
               icon: "bi bi-envelope",
             },
           ],
@@ -49,19 +49,19 @@ export default {
             },
             {
               id: "insta",
-              href: "#",
+              href: "https://www.instagram.com/dailytrip.albania/",
               label: "Instagram",
               icon: "bi bi-instagram",
             },
             {
               id: "tiktok",
-              href: "#",
+              href: "https://www.tiktok.com/@dailytripalbania?_t=ZM-8vlxVOeDQpT&_r=1",
               label: "TikTok",
               icon: "bi bi-tiktok",
             },
             {
               id: "youtube",
-              href: "#",
+              href: "http://www.youtube.com/@dailytripalbania",
               label: "YouTube",
               icon: "bi bi-youtube",
             },
@@ -111,9 +111,9 @@ export default {
       </div>
     </div>
     <div class="all-reserved">
-      <h5 class="text-center">
+      <p class="text-center">
         {{ $t("footer", { year: currentYear }) }}
-      </h5>
+      </p>
     </div>
   </div>
 </template>
