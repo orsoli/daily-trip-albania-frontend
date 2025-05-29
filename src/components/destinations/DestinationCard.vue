@@ -45,7 +45,9 @@ export default {
         />
         <div class="card-img-overlay">
           <h4 class="card-title">{{ destination.name }}</h4>
-          <p class="card-text">{{ destination.description }}</p>
+          <p class="card-text truncate-multiline">
+            {{ destination.description }}
+          </p>
         </div>
       </div>
     </div>
@@ -57,22 +59,31 @@ a {
   display: inline-block;
 
   img {
-    filter: brightness(0.5);
     transition: transform 0.3s ease-in-out, filter 0.3s ease;
   }
 
   &:hover {
     img {
       transform: scale(1.02);
-      filter: brightness(1);
+      filter: brightness(0.5);
       box-shadow: 0 0 10px 3px rgba(224, 224, 224, 0.764);
     }
     .card-text {
-      display: none;
+      display: block;
     }
-    .card-title {
-      text-shadow: 0 0 10px black;
+    .truncate-multiline {
+      display: -webkit-box;
+      -webkit-line-clamp: 4;
+      line-clamp: 4;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
     }
+  }
+  .card-text {
+    display: none;
+  }
+  .card-title {
+    text-shadow: 0 0 10px black;
   }
 }
 </style>
