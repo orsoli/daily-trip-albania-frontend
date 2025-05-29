@@ -257,6 +257,7 @@ export default {
             <!-- Trajectory -->
             <div class="row row-cols-1 row-cols-md-2 align-items-center g-3">
               <div class="col ps-5">
+                <p></p>
                 <div class="point">
                   <div class="circle border"></div>
                   <p>{{ $t("start_at") }}</p>
@@ -285,102 +286,141 @@ export default {
                 <Map :markers="tourDestinationsMap" />
               </div>
             </div>
-            <div class="hr"></div>
-            <!-- Tour badges -->
-            <div class="row row-cols-3 mb-4">
-              <div class="col">
-                <span class="badge border rounded-pill text-bg-dark p-2">
-                  <i class="bi bi-clock-history"></i>
-                  {{ $t("duration") }}:
-                  {{ tour.duration }}
-                </span>
+          </div>
+          <div class="hr"></div>
+          <!-- Tour badges -->
+          <div class="row row-cols-3 mb-4">
+            <div class="col">
+              <span class="badge border rounded-pill text-bg-dark p-2">
+                <i class="bi bi-clock-history"></i>
+                {{ $t("duration") }}:
+                {{ tour.duration }}
+              </span>
+            </div>
+            <div class="col">
+              <span class="badge border rounded-pill text-bg-dark p-2">
+                <i class="bi bi-speedometer2"></i>
+                {{ $t("difficulty") }}:
+                {{ tour.difficulty }}
+              </span>
+            </div>
+            <div class="col">
+              <span class="badge border rounded-pill text-bg-dark p-2">
+                <i class="bi bi-people"></i>
+                {{ $t("popularity") }}:
+                {{ tour.popularity }}
+              </span>
+            </div>
+          </div>
+          <!-- itinerary info -->
+          <div
+            class="itinerary-info"
+            v-if="itineraries && itineraries.length > 0"
+          >
+            <div
+              v-for="itinerary in itineraries"
+              :key="itinerary.id"
+              class="row bg-dark rounded-3 bg-opacity-75 mb-1 p-1"
+            >
+              <div v-if="itinerary.day" class="col align-self-center">
+                <i class="bi bi-info-circle-fill"></i>
+                {{ itinerary.day }}
+              </div>
+              <div v-else class="col align-self-center">
+                <i class="bi bi-info-circle-fill"></i>
               </div>
               <div class="col">
-                <span class="badge border rounded-pill text-bg-dark p-2">
-                  <i class="bi bi-speedometer2"></i>
-                  {{ $t("difficulty") }}:
-                  {{ tour.difficulty }}
-                </span>
+                <i class="bi bi-signpost pe-1"></i>
+                <small>{{ $t("start_at") }}: </small>
+                {{ itinerary.start_at }}
               </div>
               <div class="col">
-                <span class="badge border rounded-pill text-bg-dark p-2">
-                  <i class="bi bi-people"></i>
-                  {{ $t("popularity") }}:
-                  {{ tour.popularity }}
-                </span>
+                <i class="bi bi-cup-hot pe-1"></i>
+                <small>{{ $t("lunch_time") }}: </small>
+                {{ itinerary.lunch_time }}
+              </div>
+              <div class="col">
+                <i class="bi bi-check2-circle pe-1"></i>
+                <small>{{ $t("end_at") }}: </small>
+                {{ itinerary.end_at }}
+              </div>
+              <div class="col-12 p-2">
+                <i class="bi bi-activity"></i>
+                <small class="text-info">Activities: </small>
+                {{ itinerary.activities }}
               </div>
             </div>
-            <!-- Highlights -->
-            <ul class="list-unstyled">
-              <li>
-                <div class="hr"></div>
-                <div class="row row-cols-1 row-cols-md-2">
-                  <div class="col-md-4">
-                    <h4>
-                      {{ $t("highlights") }}
-                    </h4>
-                  </div>
-                  <div class="col-md-8">
-                    <ul>
-                      <li
-                        v-for="destination in tourDestinations"
-                        :key="destination.id"
-                      >
-                        {{ destination.description }}
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </li>
-              <!-- Full Description -->
-              <li v-if="itineraries && itineraries.length > 0">
-                <div class="hr"></div>
-                <div class="row row-cols-1 row-cols-md-2">
-                  <div class="col-md-4">
-                    <h4>
-                      {{ $t("full_description") }}
-                    </h4>
-                  </div>
-                  <div class="col-md-8">
-                    <ul>
-                      <li v-for="itinerary in itineraries" :key="itinerary.id">
-                        {{ itinerary.activities }}
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </li>
-              <!-- Meeting Point -->
-              <li>
-                <div class="hr"></div>
-                <div class="row row-cols-1 row-cols-md-2">
-                  <div class="col-md-4">
-                    <h4>
-                      {{ $t("meeting_point.text") }}
-                    </h4>
-                  </div>
-                  <div class="col-md-8">
-                    <ul class="list-unstyled">
-                      <li v-for="(detail, i) in meetingPoints" :key="i">
-                        {{ detail.address }}
-                        <i>
-                          <a
-                            :href="detail.map_url"
-                            class="text-info"
-                            target="_blank"
-                            >{{ $t("meeting_point.go_to_map") }}</a
-                          >
-                        </i>
-                      </li>
-                    </ul>
-                    <p class="p-2">
-                      {{ $t("meeting_point.description") }}
-                    </p>
-                  </div>
-                </div>
-              </li>
-            </ul>
           </div>
+          <!-- Highlights -->
+          <ul class="list-unstyled">
+            <li v-if="tourDestinations && tourDestinations.length > 0">
+              <div class="hr"></div>
+              <div class="row row-cols-1 row-cols-md-2">
+                <div class="col-md-4">
+                  <h4>
+                    {{ $t("highlights") }}
+                  </h4>
+                </div>
+                <div class="col-md-8">
+                  <ul>
+                    <li
+                      v-for="destination in tourDestinations"
+                      :key="destination.id"
+                    >
+                      {{ destination.description }}
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </li>
+            <!-- Full Description -->
+            <li v-if="itineraries && itineraries.length > 0">
+              <div class="hr"></div>
+              <div class="row row-cols-1 row-cols-md-2">
+                <div class="col-md-4">
+                  <h4>
+                    {{ $t("full_description") }}
+                  </h4>
+                </div>
+                <div class="col-md-8">
+                  <ul>
+                    <li v-for="itinerary in itineraries" :key="itinerary.id">
+                      {{ itinerary.activities }}
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </li>
+            <!-- Meeting Point -->
+            <li>
+              <div class="hr"></div>
+              <div class="row row-cols-1 row-cols-md-2">
+                <div class="col-md-4">
+                  <h4>
+                    {{ $t("meeting_point.text") }}
+                  </h4>
+                </div>
+                <div class="col-md-8">
+                  <ul class="list-unstyled">
+                    <li v-for="(detail, i) in meetingPoints" :key="i">
+                      {{ detail.address }}
+                      <i>
+                        <a
+                          :href="detail.map_url"
+                          class="text-info"
+                          target="_blank"
+                          >{{ $t("meeting_point.go_to_map") }}</a
+                        >
+                      </i>
+                    </li>
+                  </ul>
+                  <p class="p-2">
+                    {{ $t("meeting_point.description") }}
+                  </p>
+                </div>
+              </div>
+            </li>
+          </ul>
         </div>
         <!-- Action section -->
         <div v-if="!TourDetailsStore.loading" class="col-4 d-none d-lg-block">
@@ -429,16 +469,22 @@ export default {
     </div>
     <!-- Tour destinations -->
     <div v-if="tourDestinations && tourDestinations.length > 0" class="mb-3">
-      <h4>This Tour Destinations</h4>
-      <div v-for="destination in tourDestinations" :key="destination.id">
-        <destination-card :destination="destination" />
+      <h4>{{ $t("this_tour_destinations") }}</h4>
+      <div
+        class="row row-cols-1 row-cols-md-2 row-cols-lg-4 flex-nowrap overflow-x-scroll pe-5"
+      >
+        <destination-card
+          v-for="destination in tourDestinations"
+          :key="destination.id"
+          :destination="destination"
+        />
       </div>
     </div>
 
     <!-- Other tour loader -->
     <div
       v-if="ToursStore.loading"
-      class="row row-cols-1 row-cols-md-2 row-cols-lg-4 flex-nowrap overflow-x-scroll"
+      class="row row-cols-1 row-cols-md-2 row-cols-lg-4 flex-nowrap overflow-x-scroll my-3"
     >
       <div v-for="n in 8" :key="n" class="col">
         <tour-card-loader />
@@ -448,7 +494,7 @@ export default {
     <div v-else class="other-tours">
       <h4>{{ $t("you_might_also_like") }}</h4>
       <div
-        class="row row-cols-1 row-cols-md-2 row-cols-lg-4 flex-nowrap overflow-x-scroll"
+        class="row row-cols-1 row-cols-md-2 row-cols-lg-4 flex-nowrap overflow-x-scroll pe-5"
       >
         <tour-card
           v-for="otherTour in otherTours"

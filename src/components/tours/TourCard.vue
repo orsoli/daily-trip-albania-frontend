@@ -60,6 +60,7 @@ export default {
       />
       <div class="card-body d-flex flex-column">
         <h5 class="card-title fw-bold">{{ tour.title }}</h5>
+        <p>{{ tour.duration }}</p>
 
         <rating-stars
           :rating="parseFloat(tour.rating)"

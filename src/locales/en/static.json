@@ -39,11 +39,15 @@
     "services": "Services",
     "includes": "Includes",
     "about_this_tour": "About this Tour",
-    "start_at": "Start at",
-    "arrive_at": "Arrive at",
+    "start_at": "Start",
+    "arrive_at": "Arrive",
+    "lunch_time": "Lunch",
+    "end_at": "End at",
+
     "your_location": "Your location",
     "full_description": "Full Description",
     "you_might_also_like": "You might also Like...",
+    "this_tour_destinations": "This Tour Destinations",
 
     "agency": "Agency",
     "customer_care": "Customer Care",

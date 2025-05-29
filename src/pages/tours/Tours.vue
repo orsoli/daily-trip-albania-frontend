@@ -24,7 +24,7 @@ export default {
     <!-- Title page -->
     <h1>Tours</h1>
 
-    <ToursList />
+    <tours-list />
   </div>
 </template>
 

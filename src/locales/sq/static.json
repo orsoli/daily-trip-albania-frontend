@@ -39,11 +39,15 @@
     "services": "Sherbimet",
     "includes": "Përfshin",
     "about_this_tour": "Rreth këtij turi",
-    "start_at": "Nisja në",
-    "arrive_at": "Mbërritja në",
+    "start_at": "Nisja",
+    "arrive_at": "Mbërritja",
+    "lunch_time": "Dreka",
+    "end_at": "Përfundimi",
+
     "your_location": "Vendndodhja juaj",
     "full_description": "Përshkrimi i plotë",
     "you_might_also_like": "Mund t'ju pëlqejnë edhe...",
+    "this_tour_destinations": "Destinacionet e këtij turi",
 
     "agency": "Agjencia",
     "customer_care": "Kujdesi ndaj Klientit",
