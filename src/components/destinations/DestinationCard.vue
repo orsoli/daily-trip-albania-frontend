@@ -33,7 +33,7 @@ export default {
   <router-link
     :to="{ name: 'destination.details', params: { slug: destination.slug } }"
   >
-    <DestinationCardLoader v-if="imgLoading" />
+    <destination-card-loader v-if="imgLoading" />
     <div class="col">
       <div class="card text-bg-dark">
         <img

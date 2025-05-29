@@ -55,17 +55,17 @@ export default {
     v-if="DestinationsStore.loading"
     class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-3"
   >
-    <DestinationCardLoader v-for="n in 8" :key="n" />
+    <destination-card-loader v-for="n in 8" :key="n" />
   </div>
   <div v-else>
     <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-3">
-      <DestinationCard
+      <destination-card
         v-for="destination in destinations"
         :key="destination.id"
         :destination="destination"
       />
     </div>
-    <Paginate
+    <paginate
       v-if="lastPage > 1"
       :links="links"
       page-name="destinations"

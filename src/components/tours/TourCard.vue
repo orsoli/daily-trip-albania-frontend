@@ -61,7 +61,7 @@ export default {
       <div class="card-body d-flex flex-column">
         <h5 class="card-title fw-bold">{{ tour.title }}</h5>
 
-        <RatingStars
+        <rating-stars
           :rating="parseFloat(tour.rating)"
           :view-count="parseInt(tour.view_count)"
         />
@@ -77,7 +77,7 @@ export default {
             </h6>
           </div>
           <!-- View tour btn -->
-          <BaseButton
+          <base-button
             text="view_tour"
             color="var(--primary)"
             :to="{ name: 'tour.details', params: { slug: tour.slug } }"

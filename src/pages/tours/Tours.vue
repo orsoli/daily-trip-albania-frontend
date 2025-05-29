@@ -19,7 +19,7 @@ export default {
 <template>
   <div class="container text-light">
     <!-- Back btn -->
-    <GoBackButton />
+    <go-back-button />
 
     <!-- Title page -->
     <h1>Tours</h1>

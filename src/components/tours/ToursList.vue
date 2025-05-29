@@ -57,14 +57,14 @@ export default {
     class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-3"
   >
     <div v-for="n in 8" :key="n" class="col">
-      <TourCardLoader />
+      <tour-card-loader />
     </div>
   </div>
   <div v-else>
     <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-3">
-      <TourCard v-for="tour in tours" :key="tour.id" :tour="tour" />
+      <tour-card v-for="tour in tours" :key="tour.id" :tour="tour" />
     </div>
-    <Paginate
+    <paginate
       v-if="lastPage > 1"
       :links="links"
       page-name="tours"

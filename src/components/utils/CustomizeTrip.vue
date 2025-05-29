@@ -46,7 +46,7 @@ export default {
         {{ $t("customize_trip.description") }}
       </p>
       <!-- Button -->
-      <BaseButton href="#" text="customize_trip.create_your_trip" />
+      <base-button href="#" text="customize_trip.create_your_trip" />
     </div>
   </div>
 </template>

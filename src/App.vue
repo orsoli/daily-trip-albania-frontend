@@ -66,11 +66,11 @@ export default {
 
 <template>
   <div ref="scrollContainer" class="main-wrapper">
-    <AppHeader :isScrolled="isScrolled" />
+    <app-header :isScrolled="isScrolled" />
     <main>
-      <RouterView />
+      <router-view />
     </main>
-    <AppFooter />
+    <app-footer />
   </div>
 </template>
 

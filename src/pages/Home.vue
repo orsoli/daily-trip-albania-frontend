@@ -69,7 +69,7 @@ export default {
           <p>
             {{ $t("app_slogan") }}
           </p>
-          <BaseButton href="#" text="explore_albania" />
+          <base-button href="#" text="explore_albania" />
         </div>
         <figure class="d-none d-lg-block p-0">
           <div v-if="imgLoading" id="logo " class="placeholder-glow">
@@ -99,7 +99,7 @@ export default {
           <div v-for="n in 4" :key="n" class="placeholder col-12"></div>
         </div>
         <!-- Carousel -->
-        <Carousel
+        <carousel
           v-else
           :items="bestDestinations"
           routeName="destination.details"
@@ -120,7 +120,7 @@ export default {
       >
         <!-- Tours Loader -->
         <div v-for="n in 8" :key="n" class="col">
-          <TourCardLoader />
+          <tour-card-loader />
         </div>
       </div>
       <div
@@ -128,12 +128,12 @@ export default {
         class="row row-cols-1 row-cols-md-2 row-cols-lg-4 flex-nowrap overflow-x-scroll pe-5"
       >
         <!-- Popular Tours -->
-        <TourCard v-for="tour in bestTours" :key="tour.id" :tour="tour" />
+        <tour-card v-for="tour in bestTours" :key="tour.id" :tour="tour" />
       </div>
     </div>
 
     <!-- Browsw by Category -->
-    <CategoryFilter />
+    <category-filter />
 
     <!-- HR -->
     <div
@@ -149,10 +149,10 @@ export default {
     </div>
 
     <!-- Costumize Trip -->
-    <CustumizeTrip />
+    <custumize-trip />
   </div>
   <!-- hilights -->
-  <Highlights />
+  <highlights />
 </template>
 
 <style lang="scss" scoped>

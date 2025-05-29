@@ -3,12 +3,12 @@ import Rating from "@/components/utils/Rating.vue";
 import BaseButton from "@/components/utils/BaseButton.vue";
 import GoBackButton from "@/components/utils/GoBackButton.vue";
 import TourCardLoader from "@/components/tours/TourCardLoader.vue";
+import DestinationCard from "@/components/destinations/DestinationCard.vue";
 import TourCard from "@/components/tours/TourCard.vue";
 
 import Map from "@/components/utils/Map.vue";
 import { TourDetailsStore } from "@/store/tourDetailsStore";
 import { ToursStore } from "@/store/toursStore";
-import DestinationCard from "@/components/destinations/DestinationCard.vue";
 
 export default {
   name: "TourDetails",
@@ -81,8 +81,8 @@ export default {
     GoBackButton,
     Map,
     TourCardLoader,
-    TourCard,
     DestinationCard,
+    TourCard,
   },
 
   methods: {
@@ -114,7 +114,7 @@ export default {
 <template>
   <div class="container">
     <!-- Go back btn -->
-    <GoBackButton class="my-3" />
+    <go-back-button class="my-3" />
     <!-- Placeholder -->
     <div v-if="TourDetailsStore.loading">
       <div class="title">
@@ -210,7 +210,7 @@ export default {
         <div class="col-12 col-md-8">
           <h4 class="text-decoration-underline">{{ $t("overview") }}</h4>
           <p>{{ tour.description }}</p>
-          <Rating
+          <rating
             :rating="parseFloat(tour.rating)"
             :view-count="tour.view_count"
           />
@@ -395,7 +395,7 @@ export default {
               <p class="card-text p-0 m-0">Per Person</p>
             </div>
             <div class="book-now">
-              <BaseButton color="white" href="#" text="book_now" />
+              <base-button color="white" href="#" text="book_now" />
             </div>
             <div class="col-12 d-flex align-items-center gap-3">
               <span>
@@ -421,7 +421,7 @@ export default {
               </h5>
             </div>
             <div class="book-now">
-              <BaseButton color="white" href="#" text="book_now" />
+              <base-button color="white" href="#" text="book_now" />
             </div>
           </div>
         </div>
@@ -441,7 +441,7 @@ export default {
       class="row row-cols-1 row-cols-md-2 row-cols-lg-4 flex-nowrap overflow-x-scroll"
     >
       <div v-for="n in 8" :key="n" class="col">
-        <TourCardLoader />
+        <tour-card-loader />
       </div>
     </div>
     <!-- other tours -->
@@ -450,7 +450,7 @@ export default {
       <div
         class="row row-cols-1 row-cols-md-2 row-cols-lg-4 flex-nowrap overflow-x-scroll"
       >
-        <TourCard
+        <tour-card
           v-for="otherTour in otherTours"
           :key="otherTour.id"
           :tour="otherTour"

@@ -20,7 +20,7 @@ export default {
   <div class="container text-light">
     <GoBackButton />
     <h1>Destination</h1>
-    <DestinationsList />
+    <destinations-list />
   </div>
 </template>
 

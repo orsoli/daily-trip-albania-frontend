@@ -16,7 +16,7 @@ export default {
 
 <template>
   <div class="container text-light">
-    <GoBackButton />
+    <go-back-button />
     <h1>Launching soon — get ready to explore!</h1>
     <div class="text-center">
       <img
