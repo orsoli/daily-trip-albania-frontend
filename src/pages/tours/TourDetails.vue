@@ -2,8 +2,13 @@
 import Rating from "@/components/utils/Rating.vue";
 import BaseButton from "@/components/utils/BaseButton.vue";
 import GoBackButton from "@/components/utils/GoBackButton.vue";
+import TourCardLoader from "@/components/tours/TourCardLoader.vue";
+import TourCard from "@/components/tours/TourCard.vue";
+
 import Map from "@/components/utils/Map.vue";
 import { TourDetailsStore } from "@/store/tourDetailsStore";
+import { ToursStore } from "@/store/toursStore";
+import DestinationCard from "@/components/destinations/DestinationCard.vue";
 
 export default {
   name: "TourDetails",
@@ -11,6 +16,7 @@ export default {
     return {
       imgLoading: true,
       TourDetailsStore,
+      ToursStore,
     };
   },
 
@@ -21,7 +27,7 @@ export default {
 
     tourPrice() {
       const price =
-        this.tour.currency.code +
+        this.tour.currency.symbol +
         " " +
         this.tour.price * this.tour.currency.exchange_rate;
       return price;
@@ -63,6 +69,10 @@ export default {
       ];
       return details;
     },
+
+    otherTours() {
+      return ToursStore.list.data.filter((tour) => tour.id !== this.tour.id);
+    },
   },
 
   components: {
@@ -70,6 +80,9 @@ export default {
     BaseButton,
     GoBackButton,
     Map,
+    TourCardLoader,
+    TourCard,
+    DestinationCard,
   },
 
   methods: {
@@ -81,6 +94,7 @@ export default {
   mounted() {
     const slug = this.$route.params.slug;
     TourDetailsStore.fetchResources(slug);
+    ToursStore.fetchResources();
 
     // Modal
     const modal = document.getElementById("imageModal");
@@ -413,8 +427,37 @@ export default {
         </div>
       </div>
     </div>
+    <!-- Tour destinations -->
+    <div v-if="tourDestinations && tourDestinations.length > 0" class="mb-3">
+      <h4>This Tour Destinations</h4>
+      <div v-for="destination in tourDestinations" :key="destination.id">
+        <destination-card :destination="destination" />
+      </div>
+    </div>
 
-    <!-- IMG Modal -->
+    <!-- Other tour loader -->
+    <div
+      v-if="ToursStore.loading"
+      class="row row-cols-1 row-cols-md-2 row-cols-lg-4 flex-nowrap overflow-x-scroll"
+    >
+      <div v-for="n in 8" :key="n" class="col">
+        <TourCardLoader />
+      </div>
+    </div>
+    <!-- other tours -->
+    <div v-else class="other-tours">
+      <h4>{{ $t("you_might_also_like") }}</h4>
+      <div
+        class="row row-cols-1 row-cols-md-2 row-cols-lg-4 flex-nowrap overflow-x-scroll"
+      >
+        <TourCard
+          v-for="otherTour in otherTours"
+          :key="otherTour.id"
+          :tour="otherTour"
+        />
+      </div>
+    </div>
+    <!--? IMG Modal -->
     <div
       class="modal fade"
       id="imageModal"

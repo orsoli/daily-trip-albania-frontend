@@ -4,7 +4,6 @@ import axios from "axios";
 export const ToursStore = reactive({
   apiUrl: "http://localhost:8088/api/tours",
   list: [],
-  singleTour: {},
   page: 1,
   loading: true,
   searchQuery: [],

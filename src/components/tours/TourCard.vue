@@ -19,6 +19,16 @@ export default {
     },
   },
 
+  computed: {
+    price() {
+      return (
+        this.tour.currency.symbol +
+        " " +
+        this.tour.price * this.tour.currency.exchange_rate
+      );
+    },
+  },
+
   components: {
     RatingStars,
     TourCardLoader,
@@ -63,8 +73,7 @@ export default {
           <div class="price">
             <span>From</span>
             <h6 class="fw-bold">
-              {{ tour.price }}
-              {{ tour.currency.code }}
+              {{ price }}
             </h6>
           </div>
           <!-- View tour btn -->
