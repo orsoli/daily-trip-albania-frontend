@@ -89,6 +89,10 @@ export default {
     handleImageError(event) {
       event.target.src = "https://placehold.co/300x200?text=No+Image";
     },
+
+    otherTourSelected(newTour) {
+      TourDetailsStore.tour = newTour;
+    },
   },
 
   mounted() {
@@ -500,6 +504,7 @@ export default {
           v-for="otherTour in otherTours"
           :key="otherTour.id"
           :tour="otherTour"
+          @click="otherTourSelected(otherTour)"
         />
       </div>
     </div>
